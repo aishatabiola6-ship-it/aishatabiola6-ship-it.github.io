@@ -266,7 +266,21 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   .facts{grid-template-columns:1fr 1fr}
 }
 @media (max-width:560px){
-  .grid,.services{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr;gap:12px}
+  .pcard{border-radius:16px}
+  .pcard .cover{aspect-ratio:4/3}
+  .cover.type b{font-size:17px}
+  .pbody{padding:12px;gap:6px}
+  .pbody .k{font-size:9px;letter-spacing:.08em}
+  .pbody h3{font-size:16px}
+  .pbody p{font-size:12px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .tags{display:none}
+  .pbody .acts{flex-direction:column;gap:6px}
+  .pbody .acts .btn{justify-content:center;padding:9px 10px;font-size:12px}
+  .services{grid-template-columns:1fr 1fr;gap:12px}
+  .svc{padding:16px;border-radius:16px}
+  .svc h3{font-size:15px;margin-top:12px}
+  .svc p{font-size:12px;line-height:1.45}
   .steps{grid-template-columns:1fr}
   .gal.g2{grid-template-columns:1fr}
   section.block{padding-block:64px}
@@ -359,7 +373,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
       </div>
       <div class="grid">
         <article class="pcard rise" data-cat="web">
-          <div class="cover"><img src="img/camorra-detail.jpg" alt="Camorra Hair product page"></div>
+          <div class="cover"><img src="img/camorra-cover.jpg" alt="Four Camorra Hair app screens: sign-in, catalogue, product page and order tracking" style="object-position:center"></div>
           <div class="pbody"><span class="k">Website design &amp; build</span><h3>Camorra Hair</h3><p>A mobile wig store with video product pages, checkout and live delivery tracking.</p><div class="tags"><span>Mobile store</span><span>Checkout</span><span>Tracking</span></div>
             <div class="acts"><a class="btn gold" href="#camorra">Read more</a><a class="btn" href="https://camorrahair.netlify.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
