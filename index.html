@@ -155,9 +155,9 @@ dialog.case::backdrop{background:rgba(8,4,9,.8);backdrop-filter:blur(4px)}
 .meta dd{margin:0;font-weight:600}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px}
 .two > *{min-width:0}
-.case-body h4{margin:0 0 10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
-.case-body .prose{color:var(--muted)}
-.case-body .prose strong{color:var(--ink)}
+.case-inline h4,.case-body h4{margin:0 0 10px;font-family:var(--f-mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.case-inline .prose,.case-body .prose{color:var(--muted)}
+.case-inline .prose strong,.case-body .prose strong{color:var(--ink)}
 .ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 .ticks li{position:relative;padding-left:20px;color:var(--muted)}
 .ticks li::before{content:"";position:absolute;left:0;top:.7em;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--glow)}
@@ -189,6 +189,14 @@ dialog.case::backdrop{background:rgba(8,4,9,.8);backdrop-filter:blur(4px)}
 .wide-scroll img{width:1500px;max-width:none;height:auto}
 .note{margin-top:24px;padding:16px 18px;border:1px dashed var(--line);border-radius:14px;font-size:14px;color:var(--muted)}
 .case-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px}
+
+/* inline case studies */
+.case-inline{padding-block:72px;border-top:1px solid var(--line);scroll-margin-top:80px}
+.case-inline .case-cta{margin-top:20px}
+.case-inline .back{margin-top:28px;font-size:14px}
+.case-inline .back a{color:var(--muted);text-decoration:none}
+.case-inline .back a:hover{color:var(--gold)}
+.case-inline h2{font-size:clamp(34px,5vw,60px)}
 
 /* about */
 .about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
@@ -340,7 +348,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
 
   <section class="block" id="work">
     <div class="wrap">
-      <div class="head"><p class="label">Selected work</p><h2>My <em class="acc">projects</em></h2><p>Tap a project to read how it was built and see more screens.</p></div>
+      <div class="head"><p class="label">Selected work</p><h2>My <em class="acc">projects</em></h2><p>Here are six projects. Each one is explained in full further down the page, with screenshots.</p></div>
       <div class="filters" role="group" aria-label="Filter projects">
         <button type="button" data-f="all" aria-pressed="true">All</button>
         <button type="button" data-f="web" aria-pressed="false">Websites</button>
@@ -350,36 +358,167 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
         <article class="pcard rise" data-cat="web">
           <div class="cover"><img src="img/camorra-detail.jpg" alt="Camorra Hair product page"></div>
           <div class="pbody"><span class="k">Website design &amp; build</span><h3>Camorra Hair</h3><p>A mobile wig store with video product pages, checkout and live delivery tracking.</p><div class="tags"><span>Mobile store</span><span>Checkout</span><span>Tracking</span></div>
-            <div class="acts"><button class="btn gold" type="button" data-open="t-camorra">Read more</button><a class="btn" href="https://camorrahair.netlify.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
+            <div class="acts"><a class="btn gold" href="#camorra">Read more</a><a class="btn" href="https://camorrahair.netlify.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="web">
           <div class="cover"><img src="img/preshy-desktop.jpg" alt="Preshy Emporium homepage"></div>
           <div class="pbody"><span class="k">E-commerce website</span><h3>Preshy Emporium</h3><p>A discreet online boutique with sign-in, Flutterwave payments and automatic order records.</p><div class="tags"><span>Store</span><span>Flutterwave</span><span>Google Sheets</span></div>
-            <div class="acts"><button class="btn gold" type="button" data-open="t-preshy">Read more</button><a class="btn" href="https://preshy-emporium.netlify.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
+            <div class="acts"><a class="btn gold" href="#preshy">Read more</a><a class="btn" href="https://preshy-emporium.netlify.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="web">
           <div class="cover"><img src="img/sc-hero.jpg" alt="Shop Camorra landing page"></div>
           <div class="pbody"><span class="k">Landing page</span><h3>Shop Camorra</h3><p>A limited-drop fashion launch page that shows the current drop and grows a mailing list.</p><div class="tags"><span>Landing page</span><span>Lookbook</span><span>Replit</span></div>
-            <div class="acts"><button class="btn gold" type="button" data-open="t-shop">Read more</button><a class="btn" href="https://camorra-landing-page--aishatabiola6.replit.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
+            <div class="acts"><a class="btn gold" href="#shop-camorra">Read more</a><a class="btn" href="https://camorra-landing-page--aishatabiola6.replit.app/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="auto">
           <div class="cover"><img src="img/prime-workflow.jpg" alt="Prime Publishers n8n workflow"></div>
           <div class="pbody"><span class="k">n8n automation</span><h3>Prime Publishers</h3><p>A paper sales floor rebuilt with web forms, Google Sheets and Telegram alerts.</p><div class="tags"><span>n8n</span><span>Google Sheets</span><span>Telegram</span></div>
-            <div class="acts"><button class="btn gold" type="button" data-open="t-prime">Read more</button><a class="btn" href="https://prime-publisher-books.netlify.app/" target="_blank" rel="noopener">Live project &nearr;</a></div></div>
+            <div class="acts"><a class="btn gold" href="#prime">Read more</a><a class="btn" href="https://prime-publisher-books.netlify.app/" target="_blank" rel="noopener">Live project &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="auto">
           <div class="cover"><img src="img/bot-workflow.jpg" alt="PRIME lead bot workflow in n8n"></div>
           <div class="pbody"><span class="k">Telegram chatbot</span><h3>PRIME Lead Bot</h3><p>A Telegram bot that collects leads, saves them, emails a thank-you and alerts the owner.</p><div class="tags"><span>Telegram</span><span>n8n</span><span>Gmail</span></div>
-            <div class="acts"><button class="btn gold" type="button" data-open="t-bot">Read more</button></div></div>
+            <div class="acts"><a class="btn gold" href="#lead-bot">Read more</a></div></div>
         </article>
         <article class="pcard rise" data-cat="auto">
           <div class="cover type"><div><b>Audit · Workflow · SOP</b><small>Training project</small></div></div>
           <div class="pbody"><span class="k">AI audit &amp; SOP · Training</span><h3>Lead follow-up for a consultant</h3><p>An audit, Zapier workflow, SOP and prompt library for a solo consultant brief.</p><div class="tags"><span>Zapier</span><span>AI prompts</span><span>SOP</span></div>
-            <div class="acts"><button class="btn gold" type="button" data-open="t-james">Read more</button></div></div>
+            <div class="acts"><a class="btn gold" href="#consultant">Read more</a></div></div>
         </article>
       </div>
     </div>
   </section>
+
+  <article class="case-inline" id="camorra">
+    <div class="wrap">
+  <p class="label">01 · Website &amp; mobile shopping experience</p>
+  <h2 style="margin-top:10px">Camorra <em class="acc">Hair</em></h2>
+  <dl class="meta"><div><dt>Client</dt><dd>Camorra Hair, Lagos</dd></div><div><dt>Role</dt><dd>Design &amp; build</dd></div><div><dt>Scope</dt><dd>Shop to doorstep</dd></div></dl>
+  <div class="case-cta"><a class="btn gold" href="https://camorrahair.netlify.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
+  <div class="two">
+    <div><h4>The brief</h4><p class="prose">Camorra Hair sells custom human-hair units styled in its Lagos studio. A wig is a ₦165,000 to ₦455,000 purchase, so buyers want to see the hair move before they pay, and they want to know exactly where their unit is once it leaves the studio.</p></div>
+    <div><h4>What I designed</h4><ul class="ticks"><li>Video-first catalogue: every unit has a short clip, with a Photo / Video toggle on the detail page.</li><li>Length selector (20", 24", 28") that updates the price and the Add to bag button live.</li><li>Checkout with Express or Standard delivery and Card or Bank transfer, priced in naira.</li><li>Order tracking from Packed to Out for delivery to Delivered, with a map and the rider's name.</li></ul></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Start</div><div class="nm">Sign in or skip</div></div></li><li><div class="node"><div class="ty">Browse</div><div class="nm">Video catalogue</div></div></li><li><div class="node"><div class="ty">Detail</div><div class="nm">Length &amp; quantity</div></div></li><li><div class="node"><div class="ty">Bag</div><div class="nm">Subtotal + delivery</div></div></li><li><div class="node"><div class="ty">Checkout</div><div class="nm">Card or transfer</div></div></li><li><div class="node"><div class="ty">Track</div><div class="nm">Rider to doorstep</div></div></li></ol></div>
+  <div class="wide-scroll"><img src="img/camorra-flow.jpg" alt="Eleven Camorra Hair app screens from sign-in to delivered order" width="1980" height="320"></div>
+  <p class="muted" style="font-size:12px;margin-top:6px">The full flow. Scroll sideways to see every screen.</p>
+  <div class="gal g4">
+    <figure class="shot tall"><button type="button" data-cap="Catalogue: each unit card shows length, texture, price and a video badge."><img src="img/camorra-grid.jpg" alt="Camorra Hair catalogue grid"></button><figcaption>Catalogue grid</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Unit details: video, rating, length options and a live-priced Add to bag button."><img src="img/camorra-detail.jpg" alt="Copper Cinnamon unit detail page"></button><figcaption>Unit details</figcaption></figure>
+  </div>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
+  <article class="case-inline" id="preshy">
+    <div class="wrap">
+  <p class="label">02 · E-commerce website</p>
+  <h2 style="margin-top:10px">Preshy <em class="acc">Emporium</em></h2>
+  <dl class="meta"><div><dt>Client</dt><dd>Intimate wellness boutique</dd></div><div><dt>Role</dt><dd>Design, build &amp; automation</dd></div><div><dt>Payments</dt><dd>Flutterwave</dd></div></dl>
+  <div class="case-cta"><a class="btn gold" href="https://preshy-emporium.netlify.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
+  <div class="two">
+    <div><h4>The brief</h4><p class="prose">Preshy Emporium sells intimate wellness products, so customers care about privacy as much as the products. The store had to feel warm and discreet, make paying easy, and handle each order without the owner chasing it by hand.</p></div>
+    <div><h4>What I built</h4><ul class="ticks"><li>A full storefront: opening page, shop with categories and search, product pages, saved items and a bag.</li><li>Sign-in with an emailed code or a password, plus welcome and order emails.</li><li>Flutterwave checkout, with each payment verified before the order is accepted.</li><li>Paid orders go to a Google Sheet and the customer gets a confirmation email, with WhatsApp for questions.</li><li>Discreet packaging and private checkout made clear on every page, plus a policies page.</li></ul></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Shop</div><div class="nm">Browse &amp; add to bag</div></div></li><li><div class="node"><div class="ty">Sign in</div><div class="nm">Code or password</div></div></li><li><div class="node"><div class="ty">Flutterwave</div><div class="nm">Pay securely</div></div></li><li><div class="node"><div class="ty">Check</div><div class="nm">Payment verified</div></div></li><li><div class="node"><div class="ty">Sheets</div><div class="nm">Order recorded</div></div></li><li><div class="node"><div class="ty">Email</div><div class="nm">Customer confirmed</div></div></li></ol></div>
+  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="Preshy Emporium on a laptop."><img src="img/preshy-desktop.jpg" alt="Preshy Emporium homepage on a laptop" width="900" height="539"></button><figcaption>Homepage on a laptop</figcaption></figure>
+  <div class="gal g4">
+    <figure class="shot tall"><button type="button" data-cap="Age check: visitors confirm they are 18 or older."><img src="img/preshy-gate.jpg" alt="Age check screen"></button><figcaption>18+ welcome</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Phone homepage with search, categories and WhatsApp."><img src="img/preshy-home.jpg" alt="Homepage on a phone"></button><figcaption>Shop</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Product page: photos, colours, price and Add to bag."><img src="img/preshy-product.jpg" alt="Product page"></button><figcaption>Product page</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Bag: quantities, subtotal and checkout."><img src="img/preshy-bag.jpg" alt="Bag and checkout"></button><figcaption>Bag &amp; checkout</figcaption></figure>
+  </div>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
+  <article class="case-inline" id="shop-camorra">
+    <div class="wrap">
+  <p class="label">03 · Landing page</p>
+  <h2 style="margin-top:10px">Shop <em class="acc">Camorra</em></h2>
+  <dl class="meta"><div><dt>Client</dt><dd>Shop Camorra, women's fashion</dd></div><div><dt>Role</dt><dd>Design &amp; build</dd></div><div><dt>Built on</dt><dd>Replit</dd></div></dl>
+  <div class="case-cta"><a class="btn gold" href="https://camorra-landing-page--aishatabiola6.replit.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
+  <div class="two">
+    <div><h4>The brief</h4><p class="prose">Shop Camorra sells clothing in limited drops that never restock. The brand needed one page that makes each drop feel urgent, shows what's in stock right now, and turns visitors into members who hear about the next drop first.</p></div>
+    <div><h4>What I built</h4><ul class="ticks"><li>A bold opening, "Fashion that doesn't ask for permission", with Join the Family and View Collection buttons.</li><li>A Why Camorra section on quality, limited drops and member perks.</li><li>The Current Drop: 12 pieces from ₦25,000 to ₦40,000, with New In, Best Seller and Sold Out labels and Notify Me for sold-out items.</li><li>A free lookbook offered in exchange for joining the Muse mailing list.</li><li>A WhatsApp button and Instagram and TikTok links.</li></ul></div>
+  </div>
+  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="Shop Camorra opening screen."><img src="img/sc-hero.jpg" alt="Shop Camorra opening screen" width="1200" height="675"></button><figcaption>Opening screen</figcaption></figure>
+  <div class="gal g2">
+    <figure class="shot"><button type="button" data-cap="Why Camorra: four reasons to buy."><img src="img/sc-why.jpg" alt="Why Camorra section"></button><figcaption>Why Camorra</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="The free Camorra Muse lookbook sign-up."><img src="img/sc-lookbook.jpg" alt="Lookbook sign-up"></button><figcaption>Lookbook sign-up</figcaption></figure>
+  </div>
+  <figure class="shot" style="margin-top:12px;max-width:760px"><button type="button" data-cap="The Current Drop: 12 pieces with prices and stock labels."><img src="img/sc-collection.jpg" alt="Current drop collection" width="1200" height="1525"></button><figcaption>The Current Drop</figcaption></figure>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
+  <article class="case-inline" id="prime">
+    <div class="wrap">
+  <p class="label">04 · Sales process automation</p>
+  <h2 style="margin-top:10px">Prime Publishers, <em class="acc">off paper</em></h2>
+  <dl class="meta"><div><dt>Client</dt><dd>Book production business</dd></div><div><dt>Stack</dt><dd>n8n · Google Sheets</dd></div><div><dt>Alerts</dt><dd>Telegram · Email</dd></div></dl>
+  <div class="case-cta"><a class="btn gold" href="https://prime-publisher-books.netlify.app/" target="_blank" rel="noopener">View the live project &nearr;</a></div>
+  <div class="two">
+    <div><h4>The problem</h4><ul class="ticks bad"><li>Every sale was written two or three times as the customer moved from the gate to Room 1, Room 2 and Room 3.</li><li>Reps added totals by hand, so prices could be wrong.</li><li>Paper books and stamps were easy to lose or alter, and rooms couldn't see each other's work.</li><li>The owner couldn't see daily revenue without counting through the books.</li></ul></div>
+    <div><h4>The solution</h4><p class="prose">I replaced each paper step with a web form. The forms share one <strong>Order ID</strong>, Google Sheets holds the record, and Telegram tells the next room what to do. One entry per sale, totals pulled from the price list, and books can't be released for an unpaid order.</p></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Form</div><div class="nm">Gate sign-in</div></div></li><li><div class="node"><div class="ty">Room 1</div><div class="nm">Order + auto total</div></div></li><li><div class="node"><div class="ty">Telegram</div><div class="nm">Cashier alerted</div></div></li><li><div class="node"><div class="ty">Room 3</div><div class="nm">Payment checked</div></div></li><li><div class="node"><div class="ty">Telegram</div><div class="nm">Warehouse prepares</div></div></li><li><div class="node"><div class="ty">Email</div><div class="nm">HTML receipt</div></div></li><li><div class="node"><div class="ty">Release</div><div class="nm">Gate cleared</div></div></li><li><div class="node"><div class="ty">6 PM daily</div><div class="nm">Owner report</div></div></li></ol></div>
+  <div class="ba"><table><thead><tr><th>Step</th><th>Before</th><th>After</th></tr></thead><tbody>
+    <tr><td>Gate</td><td>Paper sign-in book</td><td>Form logs name, address, phone, time in and time out</td></tr>
+    <tr><td>Room 1</td><td>Rep writes the order and adds prices</td><td>Prices looked up and totalled; an Order ID is created</td></tr>
+    <tr><td>Room 2</td><td>Details copied into a second book</td><td>Removed. The cashier gets a Telegram alert instead</td></tr>
+    <tr><td>Room 3</td><td>Payment confirmed and stamped</td><td>Amount checked against the total; order marked Paid</td></tr>
+    <tr><td>Warehouse</td><td>Books brought out when called for</td><td>Telegram tells the store team what to prepare</td></tr>
+    <tr><td>Release</td><td>Customer signs for books</td><td>Order marked Collected; the gate is told the customer can exit</td></tr>
+    <tr><td>Receipt</td><td>None</td><td>Designed HTML receipt emailed to the customer</td></tr>
+    <tr><td>Reporting</td><td>Manual counting</td><td>6 PM Telegram summary of orders, revenue and open items</td></tr>
+  </tbody></table></div>
+  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="The n8n canvas: sale, payment, release, gate and daily-report workflows."><img src="img/prime-workflow.jpg" alt="n8n workflow canvas" width="1600" height="900"></button><figcaption>The n8n build</figcaption></figure>
+  <div class="gal g4">
+    <figure class="shot tall"><button type="button" data-cap="Cashier alerts. Customer names are blurred."><img src="img/prime-cashier.jpg" alt="Telegram cashier alerts"></button><figcaption>Cashier alerts</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Warehouse alerts, sent when payment is confirmed."><img src="img/prime-warehouse.jpg" alt="Telegram warehouse alerts"></button><figcaption>Warehouse alerts</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Emailed receipt with Order ID and next steps."><img src="img/prime-receipt.jpg" alt="Email receipt"></button><figcaption>Receipt</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="The owner's 6 PM summary on Telegram."><img src="img/prime-report.jpg" alt="Daily report"></button><figcaption>Daily report</figcaption></figure>
+  </div>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
+  <article class="case-inline" id="lead-bot">
+    <div class="wrap">
+  <p class="label">05 · Conversational lead capture</p>
+  <h2 style="margin-top:10px">PRIME <em class="acc">Lead Bot</em></h2>
+  <dl class="meta"><div><dt>Channel</dt><dd>Telegram</dd></div><div><dt>Stack</dt><dd>n8n · Sheets · Gmail</dd></div><div><dt>Output</dt><dd>Lead + email + alert</dd></div></dl>
+  <div class="two">
+    <div><h4>How it works</h4><p class="prose">A visitor says hi and taps the service they need. The bot asks for their name, phone and email one question at a time and remembers where each person is in the chat. When the chat is done, the lead is saved to Google Sheets, the visitor gets a branded thank-you email, and the owner gets a <strong>New PRIME lead</strong> alert on Telegram.</p></div>
+    <div><h4>Why it matters</h4><ul class="ticks"><li>No form to abandon. Tap-to-choose buttons keep answers clean.</li><li>Every lead is logged, so nobody is lost in a chat history.</li><li>The visitor hears back instantly, with clear next steps.</li><li>Two versions built: a /start-command bot and a conversation bot.</li></ul></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Trigger</div><div class="nm">Telegram message</div></div></li><li><div class="node"><div class="ty">Code</div><div class="nm">Conversation logic</div></div></li><li><div class="node"><div class="ty">If</div><div class="nm">Finished?</div></div></li><li><div class="node"><div class="ty">Sheets</div><div class="nm">Save lead</div></div></li><li><div class="node"><div class="ty">Gmail</div><div class="nm">Thank-you email</div></div></li><li><div class="node"><div class="ty">HTTP</div><div class="nm">Notify owner</div></div></li></ol></div>
+  <div class="gal g4">
+    <figure class="shot tall"><button type="button" data-cap="Owner alerts and the visitor chat. Lead details are blurred."><img src="img/bot-leads.jpg" alt="Lead alerts and chat"></button><figcaption>Lead alerts &amp; chat</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Thank-you email. Contact details are blurred."><img src="img/bot-email.jpg" alt="Thank-you email"></button><figcaption>Thank-you email</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="Conversation bot in n8n."><img src="img/bot-workflow.jpg" alt="Conversation bot workflow"></button><figcaption>Conversation bot</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="Version 1: the /start-command bot."><img src="img/bot-build.jpg" alt="Sequential bot workflow"></button><figcaption>Version 1</figcaption></figure>
+  </div>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
+  <article class="case-inline" id="consultant">
+    <div class="wrap">
+  <p class="label">06 · AI audit, workflow &amp; SOP · Training project</p>
+  <h2 style="margin-top:10px">Lead follow-up for a <em class="acc">solo consultant</em></h2>
+  <dl class="meta"><div><dt>Brief</dt><dd>"James", boutique solo consultant</dd></div><div><dt>Programme</dt><dd>TIBA AI Authority Challenge</dd></div><div><dt>Stack</dt><dd>Zapier · AI · Gmail · Sheets</dd></div></dl>
+  <p class="note" style="margin-top:20px">This was a training brief from TIBA Academy's AI Authority Challenge, not a paid client. It shows how I audit a business and design an automation from start to finish.</p>
+  <div class="two">
+    <div><h4>The brief</h4><p class="prose">James runs a one-on-one consulting business. In the brief, every proposal, report and email was written from scratch, there was no CRM, and his assistant couldn't act without him, so new leads could wait hours or days for a reply.</p></div>
+    <div><h4>What I delivered</h4><ul class="ticks"><li>An audit of where his time goes, with before-and-after estimates for each task.</li><li>A Zapier workflow: the assistant types READY in a Google Sheet and AI writes a personal follow-up email in James's voice.</li><li>A step-by-step SOP for the assistant, with quality rules and troubleshooting.</li><li>A prompt library: the main prompt, an enhancement prompt and the AI agent's instructions.</li></ul></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Sheets</div><div class="nm">Assistant types READY</div></div></li><li><div class="node"><div class="ty">Zapier</div><div class="nm">Row watched</div></div></li><li><div class="node"><div class="ty">AI</div><div class="nm">Writes the email</div></div></li><li><div class="node"><div class="ty">Gmail</div><div class="nm">Sends it</div></div></li><li><div class="node"><div class="ty">Docs + Sheets</div><div class="nm">Record + status</div></div></li></ol></div>
+  <p class="note">The full 18-page audit, workflow map, SOP and prompt library are available on request.</p>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
 
   <section class="block" id="about">
     <div class="wrap about">
@@ -437,124 +576,11 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   </div>
 </footer>
 
-<!-- ============ CASE STUDIES ============ -->
-<template id="t-camorra">
-  <p class="label">01 · Website &amp; mobile shopping experience</p>
-  <h2 style="margin-top:10px">Camorra <em class="acc">Hair</em></h2>
-  <dl class="meta"><div><dt>Client</dt><dd>Camorra Hair, Lagos</dd></div><div><dt>Role</dt><dd>Design &amp; build</dd></div><div><dt>Scope</dt><dd>Shop to doorstep</dd></div></dl>
-  <div class="case-cta"><a class="btn gold" href="https://camorrahair.netlify.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
-  <div class="two">
-    <div><h4>The brief</h4><p class="prose">Camorra Hair sells custom human-hair units styled in its Lagos studio. A wig is a ₦165,000 to ₦455,000 purchase, so buyers want to see the hair move before they pay, and they want to know exactly where their unit is once it leaves the studio.</p></div>
-    <div><h4>What I designed</h4><ul class="ticks"><li>Video-first catalogue: every unit has a short clip, with a Photo / Video toggle on the detail page.</li><li>Length selector (20", 24", 28") that updates the price and the Add to bag button live.</li><li>Checkout with Express or Standard delivery and Card or Bank transfer, priced in naira.</li><li>Order tracking from Packed to Out for delivery to Delivered, with a map and the rider's name.</li></ul></div>
-  </div>
-  <div class="flow"><ol><li><div class="node"><div class="ty">Start</div><div class="nm">Sign in or skip</div></div></li><li><div class="node"><div class="ty">Browse</div><div class="nm">Video catalogue</div></div></li><li><div class="node"><div class="ty">Detail</div><div class="nm">Length &amp; quantity</div></div></li><li><div class="node"><div class="ty">Bag</div><div class="nm">Subtotal + delivery</div></div></li><li><div class="node"><div class="ty">Checkout</div><div class="nm">Card or transfer</div></div></li><li><div class="node"><div class="ty">Track</div><div class="nm">Rider to doorstep</div></div></li></ol></div>
-  <div class="wide-scroll"><img src="img/camorra-flow.jpg" alt="Eleven Camorra Hair app screens from sign-in to delivered order" width="1980" height="320"></div>
-  <p class="muted" style="font-size:12px;margin-top:6px">The full flow. Scroll sideways to see every screen.</p>
-  <div class="gal g2">
-    <figure class="shot tall"><button type="button" data-cap="Catalogue: each unit card shows length, texture, price and a video badge."><img src="img/camorra-grid.jpg" alt="Camorra Hair catalogue grid"></button><figcaption>Catalogue grid</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Unit details: video, rating, length options and a live-priced Add to bag button."><img src="img/camorra-detail.jpg" alt="Copper Cinnamon unit detail page"></button><figcaption>Unit details</figcaption></figure>
-  </div>
-</template>
 
-<template id="t-preshy">
-  <p class="label">02 · E-commerce website</p>
-  <h2 style="margin-top:10px">Preshy <em class="acc">Emporium</em></h2>
-  <dl class="meta"><div><dt>Client</dt><dd>Intimate wellness boutique</dd></div><div><dt>Role</dt><dd>Design, build &amp; automation</dd></div><div><dt>Payments</dt><dd>Flutterwave</dd></div></dl>
-  <div class="case-cta"><a class="btn gold" href="https://preshy-emporium.netlify.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
-  <div class="two">
-    <div><h4>The brief</h4><p class="prose">Preshy Emporium sells intimate wellness products, so customers care about privacy as much as the products. The store had to feel warm and discreet, make paying easy, and handle each order without the owner chasing it by hand.</p></div>
-    <div><h4>What I built</h4><ul class="ticks"><li>A full storefront: opening page, shop with categories and search, product pages, saved items and a bag.</li><li>Sign-in with an emailed code or a password, plus welcome and order emails.</li><li>Flutterwave checkout, with each payment verified before the order is accepted.</li><li>Paid orders go to a Google Sheet and the customer gets a confirmation email, with WhatsApp for questions.</li><li>Discreet packaging and private checkout made clear on every page, plus a policies page.</li></ul></div>
-  </div>
-  <div class="flow"><ol><li><div class="node"><div class="ty">Shop</div><div class="nm">Browse &amp; add to bag</div></div></li><li><div class="node"><div class="ty">Sign in</div><div class="nm">Code or password</div></div></li><li><div class="node"><div class="ty">Flutterwave</div><div class="nm">Pay securely</div></div></li><li><div class="node"><div class="ty">Check</div><div class="nm">Payment verified</div></div></li><li><div class="node"><div class="ty">Sheets</div><div class="nm">Order recorded</div></div></li><li><div class="node"><div class="ty">Email</div><div class="nm">Customer confirmed</div></div></li></ol></div>
-  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="Preshy Emporium on a laptop."><img src="img/preshy-desktop.jpg" alt="Preshy Emporium homepage on a laptop" width="900" height="539"></button><figcaption>Homepage on a laptop</figcaption></figure>
-  <div class="gal g4">
-    <figure class="shot tall"><button type="button" data-cap="Age check: visitors confirm they are 18 or older."><img src="img/preshy-gate.jpg" alt="Age check screen"></button><figcaption>18+ welcome</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Phone homepage with search, categories and WhatsApp."><img src="img/preshy-home.jpg" alt="Homepage on a phone"></button><figcaption>Shop</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Product page: photos, colours, price and Add to bag."><img src="img/preshy-product.jpg" alt="Product page"></button><figcaption>Product page</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Bag: quantities, subtotal and checkout."><img src="img/preshy-bag.jpg" alt="Bag and checkout"></button><figcaption>Bag &amp; checkout</figcaption></figure>
-  </div>
-</template>
 
-<template id="t-shop">
-  <p class="label">03 · Landing page</p>
-  <h2 style="margin-top:10px">Shop <em class="acc">Camorra</em></h2>
-  <dl class="meta"><div><dt>Client</dt><dd>Shop Camorra, women's fashion</dd></div><div><dt>Role</dt><dd>Design &amp; build</dd></div><div><dt>Built on</dt><dd>Replit</dd></div></dl>
-  <div class="case-cta"><a class="btn gold" href="https://camorra-landing-page--aishatabiola6.replit.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
-  <div class="two">
-    <div><h4>The brief</h4><p class="prose">Shop Camorra sells clothing in limited drops that never restock. The brand needed one page that makes each drop feel urgent, shows what's in stock right now, and turns visitors into members who hear about the next drop first.</p></div>
-    <div><h4>What I built</h4><ul class="ticks"><li>A bold opening, "Fashion that doesn't ask for permission", with Join the Family and View Collection buttons.</li><li>A Why Camorra section on quality, limited drops and member perks.</li><li>The Current Drop: 12 pieces from ₦25,000 to ₦40,000, with New In, Best Seller and Sold Out labels and Notify Me for sold-out items.</li><li>A free lookbook offered in exchange for joining the Muse mailing list.</li><li>A WhatsApp button and Instagram and TikTok links.</li></ul></div>
-  </div>
-  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="Shop Camorra opening screen."><img src="img/sc-hero.jpg" alt="Shop Camorra opening screen" width="1200" height="675"></button><figcaption>Opening screen</figcaption></figure>
-  <div class="gal g2">
-    <figure class="shot"><button type="button" data-cap="Why Camorra: four reasons to buy."><img src="img/sc-why.jpg" alt="Why Camorra section"></button><figcaption>Why Camorra</figcaption></figure>
-    <figure class="shot"><button type="button" data-cap="The free Camorra Muse lookbook sign-up."><img src="img/sc-lookbook.jpg" alt="Lookbook sign-up"></button><figcaption>Lookbook sign-up</figcaption></figure>
-  </div>
-  <figure class="shot" style="margin-top:12px"><button type="button" data-cap="The Current Drop: 12 pieces with prices and stock labels."><img src="img/sc-collection.jpg" alt="Current drop collection" width="1200" height="1525"></button><figcaption>The Current Drop</figcaption></figure>
-</template>
 
-<template id="t-prime">
-  <p class="label">04 · Sales process automation</p>
-  <h2 style="margin-top:10px">Prime Publishers, <em class="acc">off paper</em></h2>
-  <dl class="meta"><div><dt>Client</dt><dd>Book production business</dd></div><div><dt>Stack</dt><dd>n8n · Google Sheets</dd></div><div><dt>Alerts</dt><dd>Telegram · Email</dd></div></dl>
-  <div class="case-cta"><a class="btn gold" href="https://prime-publisher-books.netlify.app/" target="_blank" rel="noopener">View the live project &nearr;</a></div>
-  <div class="two">
-    <div><h4>The problem</h4><ul class="ticks bad"><li>Every sale was written two or three times as the customer moved from the gate to Room 1, Room 2 and Room 3.</li><li>Reps added totals by hand, so prices could be wrong.</li><li>Paper books and stamps were easy to lose or alter, and rooms couldn't see each other's work.</li><li>The owner couldn't see daily revenue without counting through the books.</li></ul></div>
-    <div><h4>The solution</h4><p class="prose">I replaced each paper step with a web form. The forms share one <strong>Order ID</strong>, Google Sheets holds the record, and Telegram tells the next room what to do. One entry per sale, totals pulled from the price list, and books can't be released for an unpaid order.</p></div>
-  </div>
-  <div class="flow"><ol><li><div class="node"><div class="ty">Form</div><div class="nm">Gate sign-in</div></div></li><li><div class="node"><div class="ty">Room 1</div><div class="nm">Order + auto total</div></div></li><li><div class="node"><div class="ty">Telegram</div><div class="nm">Cashier alerted</div></div></li><li><div class="node"><div class="ty">Room 3</div><div class="nm">Payment checked</div></div></li><li><div class="node"><div class="ty">Telegram</div><div class="nm">Warehouse prepares</div></div></li><li><div class="node"><div class="ty">Email</div><div class="nm">HTML receipt</div></div></li><li><div class="node"><div class="ty">Release</div><div class="nm">Gate cleared</div></div></li><li><div class="node"><div class="ty">6 PM daily</div><div class="nm">Owner report</div></div></li></ol></div>
-  <div class="ba"><table><thead><tr><th>Step</th><th>Before</th><th>After</th></tr></thead><tbody>
-    <tr><td>Gate</td><td>Paper sign-in book</td><td>Form logs name, address, phone, time in and time out</td></tr>
-    <tr><td>Room 1</td><td>Rep writes the order and adds prices</td><td>Prices looked up and totalled; an Order ID is created</td></tr>
-    <tr><td>Room 2</td><td>Details copied into a second book</td><td>Removed. The cashier gets a Telegram alert instead</td></tr>
-    <tr><td>Room 3</td><td>Payment confirmed and stamped</td><td>Amount checked against the total; order marked Paid</td></tr>
-    <tr><td>Warehouse</td><td>Books brought out when called for</td><td>Telegram tells the store team what to prepare</td></tr>
-    <tr><td>Release</td><td>Customer signs for books</td><td>Order marked Collected; the gate is told the customer can exit</td></tr>
-    <tr><td>Receipt</td><td>None</td><td>Designed HTML receipt emailed to the customer</td></tr>
-    <tr><td>Reporting</td><td>Manual counting</td><td>6 PM Telegram summary of orders, revenue and open items</td></tr>
-  </tbody></table></div>
-  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="The n8n canvas: sale, payment, release, gate and daily-report workflows."><img src="img/prime-workflow.jpg" alt="n8n workflow canvas" width="1600" height="900"></button><figcaption>The n8n build</figcaption></figure>
-  <div class="gal g4">
-    <figure class="shot tall"><button type="button" data-cap="Cashier alerts. Customer names are blurred."><img src="img/prime-cashier.jpg" alt="Telegram cashier alerts"></button><figcaption>Cashier alerts</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Warehouse alerts, sent when payment is confirmed."><img src="img/prime-warehouse.jpg" alt="Telegram warehouse alerts"></button><figcaption>Warehouse alerts</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Emailed receipt with Order ID and next steps."><img src="img/prime-receipt.jpg" alt="Email receipt"></button><figcaption>Receipt</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="The owner's 6 PM summary on Telegram."><img src="img/prime-report.jpg" alt="Daily report"></button><figcaption>Daily report</figcaption></figure>
-  </div>
-</template>
 
-<template id="t-bot">
-  <p class="label">05 · Conversational lead capture</p>
-  <h2 style="margin-top:10px">PRIME <em class="acc">Lead Bot</em></h2>
-  <dl class="meta"><div><dt>Channel</dt><dd>Telegram</dd></div><div><dt>Stack</dt><dd>n8n · Sheets · Gmail</dd></div><div><dt>Output</dt><dd>Lead + email + alert</dd></div></dl>
-  <div class="two">
-    <div><h4>How it works</h4><p class="prose">A visitor says hi and taps the service they need. The bot asks for their name, phone and email one question at a time and remembers where each person is in the chat. When the chat is done, the lead is saved to Google Sheets, the visitor gets a branded thank-you email, and the owner gets a <strong>New PRIME lead</strong> alert on Telegram.</p></div>
-    <div><h4>Why it matters</h4><ul class="ticks"><li>No form to abandon. Tap-to-choose buttons keep answers clean.</li><li>Every lead is logged, so nobody is lost in a chat history.</li><li>The visitor hears back instantly, with clear next steps.</li><li>Two versions built: a /start-command bot and a conversation bot.</li></ul></div>
-  </div>
-  <div class="flow"><ol><li><div class="node"><div class="ty">Trigger</div><div class="nm">Telegram message</div></div></li><li><div class="node"><div class="ty">Code</div><div class="nm">Conversation logic</div></div></li><li><div class="node"><div class="ty">If</div><div class="nm">Finished?</div></div></li><li><div class="node"><div class="ty">Sheets</div><div class="nm">Save lead</div></div></li><li><div class="node"><div class="ty">Gmail</div><div class="nm">Thank-you email</div></div></li><li><div class="node"><div class="ty">HTTP</div><div class="nm">Notify owner</div></div></li></ol></div>
-  <div class="gal g4">
-    <figure class="shot tall"><button type="button" data-cap="Owner alerts and the visitor chat. Lead details are blurred."><img src="img/bot-leads.jpg" alt="Lead alerts and chat"></button><figcaption>Lead alerts &amp; chat</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Thank-you email. Contact details are blurred."><img src="img/bot-email.jpg" alt="Thank-you email"></button><figcaption>Thank-you email</figcaption></figure>
-    <figure class="shot"><button type="button" data-cap="Conversation bot in n8n."><img src="img/bot-workflow.jpg" alt="Conversation bot workflow"></button><figcaption>Conversation bot</figcaption></figure>
-    <figure class="shot"><button type="button" data-cap="Version 1: the /start-command bot."><img src="img/bot-build.jpg" alt="Sequential bot workflow"></button><figcaption>Version 1</figcaption></figure>
-  </div>
-</template>
 
-<template id="t-james">
-  <p class="label">06 · AI audit, workflow &amp; SOP · Training project</p>
-  <h2 style="margin-top:10px">Lead follow-up for a <em class="acc">solo consultant</em></h2>
-  <dl class="meta"><div><dt>Brief</dt><dd>"James", boutique solo consultant</dd></div><div><dt>Programme</dt><dd>TIBA AI Authority Challenge</dd></div><div><dt>Stack</dt><dd>Zapier · AI · Gmail · Sheets</dd></div></dl>
-  <p class="note" style="margin-top:20px">This was a training brief from TIBA Academy's AI Authority Challenge, not a paid client. It shows how I audit a business and design an automation from start to finish.</p>
-  <div class="two">
-    <div><h4>The brief</h4><p class="prose">James runs a one-on-one consulting business. In the brief, every proposal, report and email was written from scratch, there was no CRM, and his assistant couldn't act without him, so new leads could wait hours or days for a reply.</p></div>
-    <div><h4>What I delivered</h4><ul class="ticks"><li>An audit of where his time goes, with before-and-after estimates for each task.</li><li>A Zapier workflow: the assistant types READY in a Google Sheet and AI writes a personal follow-up email in James's voice.</li><li>A step-by-step SOP for the assistant, with quality rules and troubleshooting.</li><li>A prompt library: the main prompt, an enhancement prompt and the AI agent's instructions.</li></ul></div>
-  </div>
-  <div class="flow"><ol><li><div class="node"><div class="ty">Sheets</div><div class="nm">Assistant types READY</div></div></li><li><div class="node"><div class="ty">Zapier</div><div class="nm">Row watched</div></div></li><li><div class="node"><div class="ty">AI</div><div class="nm">Writes the email</div></div></li><li><div class="node"><div class="ty">Gmail</div><div class="nm">Sends it</div></div></li><li><div class="node"><div class="ty">Docs + Sheets</div><div class="nm">Record + status</div></div></li></ol></div>
-  <p class="note">The full 18-page audit, workflow map, SOP and prompt library are available on request.</p>
-</template>
-
-<dialog class="case" id="case" aria-label="Project details">
-  <div class="case-top"><span class="label">Case study</span><button class="xbtn" type="button" data-close aria-label="Close">×</button></div>
-  <div class="case-body" id="case-body"></div>
-</dialog>
 
 <dialog class="lb" id="lb" aria-label="Screenshot">
   <button class="xbtn" type="button" aria-label="Close">×</button>
@@ -618,16 +644,6 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   lb.querySelector('.xbtn').addEventListener('click',function(){ lb.close(); });
   lb.addEventListener('click',function(e){ if(e.target===lb) lb.close(); });
 
-  // case studies
-  var dlg=document.getElementById('case'), body=document.getElementById('case-body');
-  document.querySelectorAll('[data-open]').forEach(function(b){
-    b.addEventListener('click',function(){
-      var tpl=document.getElementById(b.dataset.open); body.innerHTML=''; body.appendChild(tpl.content.cloneNode(true));
-      bindShots(body); if(dlg.showModal) dlg.showModal(); dlg.scrollTop=0;
-    });
-  });
-  dlg.querySelector('[data-close]').addEventListener('click',function(){ dlg.close(); });
-  dlg.addEventListener('click',function(e){ if(e.target===dlg) dlg.close(); });
 
   // copy buttons
   document.querySelectorAll('[data-copy]').forEach(function(b){
