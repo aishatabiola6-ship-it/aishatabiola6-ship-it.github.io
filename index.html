@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Ajibola Aishat: Website Designer, Brand Operations Architect and AI Automation Specialist.">
+<title>Ajibola Aishat Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+html,body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+/* Layout: a single editorial column; each case study opens with its workflow drawn as a strip of automation nodes, then the evidence. */
+:root{
+  --bg:#F5F3F6;
+  --surface:#FFFFFF;
+  --ink:#24142A;
+  --muted:#6B5E70;
+  --line:#DDD5E0;
+  --brass:#9A6F12;
+  --brass-soft:#F3E7C8;
+  --plum:#5B2A5E;
+  --sage:#4F6E4A;
+  --rose:#A23B4E;
+  --node:#FFFFFF;
+  --f-display:"Instrument Serif","Iowan Old Style","Georgia",serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#150E18;--surface:#1F1623;--ink:#F1EAF2;--muted:#B3A6B8;--line:#3A2D3F;
+  --brass:#E0B654;--brass-soft:#3A2E14;--plum:#D7A6DA;--sage:#9CC294;--rose:#F08A9C;--node:#251B2A;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#150E18;--surface:#1F1623;--ink:#F1EAF2;--muted:#B3A6B8;--line:#3A2D3F;
+  --brass:#E0B654;--brass-soft:#3A2E14;--plum:#D7A6DA;--sage:#9CC294;--rose:#F08A9C;--node:#251B2A;color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:4px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;text-wrap:balance;margin:0;line-height:1.05}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.prose{max-width:62ch;color:var(--muted)}
+.prose strong{color:var(--ink);font-weight:600}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:22px;border-bottom:1px solid var(--line)}
+.top nav{display:flex;gap:20px;flex-wrap:wrap}
+.top nav a{text-decoration:none;font-size:14px;color:var(--muted)}
+.top nav a:hover{color:var(--ink)}
+.mark{font-family:var(--f-display);font-size:22px}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,340px);gap:56px;align-items:center;padding-block:72px 56px}
+.hero h1{font-size:clamp(44px,6.4vw,84px);letter-spacing:-.01em}
+.hero h1 em{color:var(--brass)}
+.hero .role{margin-top:18px;font-family:var(--f-mono);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--plum)}
+.hero .lede{margin-top:24px;font-size:19px;max-width:54ch;color:var(--muted)}
+.portrait{margin:0;width:100%}
+.portrait img{display:block;width:100%;height:auto;border-radius:18px}
+.badge{position:absolute;left:50%;bottom:-14px;transform:translateX(-50%);white-space:nowrap;background:var(--ink);color:var(--bg);font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:7px 12px;border-radius:999px}
+
+/* index of work */
+.g-try{grid-template-columns:minmax(0,220px) 1fr;align-items:center}
+.index{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.index a{display:flex;flex-direction:column;gap:6px;padding:22px 20px 22px 0;text-decoration:none;min-width:0}
+.index a + a{padding-left:20px;border-left:1px solid var(--line)}
+.index .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
+.index .t{font-family:var(--f-display);font-size:26px;line-height:1.1}
+.index .d{font-size:14px;color:var(--muted)}
+.index a:hover .t{color:var(--plum)}
+
+/* case study */
+.case{padding-block:96px 24px;scroll-margin-top:16px}
+.case-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end}
+.case-head h2{font-size:clamp(40px,6vw,68px)}
+.case-head h2 em{color:var(--brass)}
+.meta{display:grid;grid-template-columns:repeat(3,auto);gap:8px 28px;justify-content:start}
+.meta dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.meta dd{margin:0;font-weight:600;font-size:15px}
+.case-body{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-top:40px}
+.case-body > *{min-width:0}
+.case-body h3{font-family:var(--f-body);font-weight:700;font-size:14px;letter-spacing:.04em;text-transform:uppercase;margin-bottom:10px}
+.ticks{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ticks li{position:relative;padding-left:22px;color:var(--muted)}
+.ticks li::before{content:"";position:absolute;left:0;top:.72em;width:10px;height:2px;background:var(--brass)}
+.ticks.problem li::before{background:var(--rose)}
+
+/* workflow strip: the signature element */
+.flow{margin-top:44px;overflow-x:auto;padding-bottom:6px}
+.flow ol{list-style:none;margin:0;padding:0;display:flex;align-items:stretch;gap:0;min-width:max-content}
+.flow li{display:flex;align-items:center}
+.node{background:var(--node);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;min-width:132px;max-width:180px}
+.node .ty{font-family:var(--f-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.node .nm{font-size:14px;font-weight:600;line-height:1.3;margin-top:3px}
+.node.trigger{border-color:var(--brass)}
+.node.trigger .ty{color:var(--brass)}
+.flow li + li::before{content:"";width:28px;height:1.5px;background:var(--line);flex:none}
+.flow-cap{margin-top:10px;font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+
+/* gallery */
+.gallery{display:grid;gap:16px;margin-top:40px}
+.g-phones{grid-template-columns:repeat(4,1fr)}
+.g-3{grid-template-columns:repeat(3,1fr)}
+.shot{margin:0;min-width:0}
+.shot button{all:unset;cursor:zoom-in;display:block;width:100%;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--surface)}
+.shot button:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+.shot img{display:block;width:100%;height:auto}
+.shot.crop img{aspect-ratio:9/16;object-fit:cover;object-position:top}
+.shot figcaption{margin-top:8px;font-size:13px;color:var(--muted)}
+.wide{margin-top:40px;overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.wide img{display:block;width:1600px;max-width:none;height:auto}
+.wide-cap{margin-top:8px;font-size:13px;color:var(--muted)}
+.wide-shot{margin-top:16px}
+
+/* before/after table */
+.ba{margin-top:40px;overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.ba table{width:100%;border-collapse:collapse;min-width:640px;font-size:15px}
+.ba th,.ba td{text-align:left;padding:14px 18px;vertical-align:top;border-bottom:1px solid var(--line)}
+.ba tr:last-child td{border-bottom:0}
+.ba th{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.ba td:first-child{font-weight:600;white-space:nowrap}
+.ba td:nth-child(2){color:var(--muted)}
+
+/* figures */
+.figs{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--line)}
+.fig{padding:20px 20px 0 0;min-width:0}
+.fig + .fig{padding-left:20px;border-left:1px solid var(--line)}
+.fig .n{font-family:var(--f-display);font-size:48px;line-height:1;font-variant-numeric:tabular-nums}
+.fig .n small{font-size:.5em}
+.fig .l{margin-top:8px;font-size:14px;color:var(--muted)}
+.fig.hl .n{color:var(--brass)}
+
+/* coming soon panel for James */
+.pending{margin-top:40px;border:1.5px dashed var(--line);border-radius:14px;padding:22px;display:flex;gap:16px;align-items:center;color:var(--muted);font-size:14px}
+.pending .dot{width:10px;height:10px;border-radius:50%;background:var(--brass);flex:none}
+
+.quote{margin-top:40px;font-family:var(--f-display);font-style:italic;font-size:clamp(24px,3.4vw,34px);line-height:1.3;max-width:30ch;color:var(--plum)}
+
+.live{display:inline-flex;align-items:center;gap:6px;margin-top:20px;font-weight:600;font-size:14px;padding:10px 16px;border-radius:999px;background:var(--ink);color:var(--bg);text-decoration:none}
+.live:hover{background:var(--plum)}
+
+/* about */
+.about > div{max-width:760px}
+.about{display:grid;grid-template-columns:minmax(0,1fr);gap:56px;align-items:center;padding-block:96px 0;margin-top:72px;border-top:1px solid var(--line);scroll-margin-top:16px}
+.about-photo{margin:0;position:relative}
+.about-photo img{display:block;width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:200px 200px 16px 16px}
+.about h2{font-size:clamp(40px,6vw,64px)}
+.about h2 em{color:var(--brass)}
+.about .prose{margin-top:20px;display:grid;gap:16px;font-size:17px}
+.facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 32px;margin:32px 0 0;padding-top:20px;border-top:1px solid var(--line)}
+.facts dt{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.facts dd{margin:0;font-weight:600;font-size:15px}
+@media (max-width:860px){.about{grid-template-columns:1fr;gap:32px}.about-photo{max-width:340px}.facts{grid-template-columns:1fr 1fr}}
+
+/* credentials */
+.cred{display:grid;grid-template-columns:minmax(0,340px) 1fr;gap:48px;align-items:center;padding-block:96px;border-top:1px solid var(--line);margin-top:72px}
+.cred h2{font-size:clamp(36px,5vw,56px)}
+.cred .prose{margin-top:16px}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.tools span{font-family:var(--f-mono);font-size:12px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--surface)}
+
+footer{border-top:1px solid var(--line);padding-block:48px 64px}
+footer .big{font-family:var(--f-display);font-size:clamp(36px,6vw,64px);line-height:1.05}
+footer .big em{color:var(--brass)}
+footer p.small{margin-top:16px;color:var(--muted);font-size:14px}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px}
+.c-card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.c-card .lbl{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.c-card .val{font-size:17px;font-weight:600;overflow-wrap:anywhere;user-select:all}
+.c-actions{display:flex;flex-wrap:wrap;gap:8px}
+.c-actions a,.c-actions button{font:600 13px/1 var(--f-body);padding:9px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer}
+.c-actions .primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.c-actions a:hover,.c-actions button:hover{border-color:var(--brass)}
+@media (max-width:860px){.contact{grid-template-columns:1fr}}
+
+/* lightbox */
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,900px);max-height:92vh}
+dialog::backdrop{background:rgba(10,5,12,.82)}
+dialog img{display:block;max-width:100%;max-height:86vh;width:auto;height:auto;border-radius:12px}
+dialog p{color:#EFE8F0;font-size:14px;margin-top:10px;text-align:center}
+dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);color:#fff;border:0;border-radius:999px;width:36px;height:36px;font-size:20px;cursor:pointer}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;gap:40px;padding-block:48px 40px}
+  .portrait{justify-self:start;width:min(360px,100%)}
+  .index{grid-template-columns:1fr 1fr}
+  .index a:nth-child(3),.index a:nth-child(5){padding-left:0;border-left:0}
+  .index a:nth-child(n+3){border-top:1px solid var(--line)}
+  .case-head,.case-body{grid-template-columns:1fr;gap:24px}
+  .g-phones{grid-template-columns:repeat(2,1fr)}
+  .g-3{grid-template-columns:1fr 1fr}
+  .figs{grid-template-columns:1fr 1fr}
+  .fig:nth-child(3){padding-left:0;border-left:0}
+  .fig:nth-child(n+3){padding-top:20px}
+  .cred{grid-template-columns:1fr;gap:32px}
+  .meta{grid-template-columns:repeat(2,auto)}
+}
+@media (max-width:480px){
+  .top nav{display:none}
+  .index{grid-template-columns:1fr}
+  .index a,.index a + a{padding-left:0;border-left:0}
+  .index a + a{border-top:1px solid var(--line)}
+  .g-3{grid-template-columns:1fr 1fr;gap:12px}
+  .g-3 > div.shot{grid-column:1/-1}
+  .g-try{grid-template-columns:1fr}
+  .g-try .shot{max-width:240px}
+  .quote{font-size:24px}
+}
+@media (prefers-reduced-motion:no-preference){
+  .shot button img{transition:transform .35s ease}
+  .shot button:hover img{transform:scale(1.02)}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <span class="mark">Ajibola Aishat</span>
+    <nav aria-label="Sections">
+      <a href="#camorra">Camorra Hair</a>
+      <a href="#prime-sales">Prime Publishers</a>
+      <a href="#prime-bot">Lead bot</a>
+      <a href="#james">James</a>
+      <a href="#velora">VELORA</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="#credentials">Credentials</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Portfolio · 2026</p>
+      <h1>Systems that run the <em>busywork</em>, so the business can run itself.</h1>
+      <p class="role">Website Designer · Brand Operations Architect · AI Automation Specialist</p>
+      <p class="lede">I design and build websites and online stores, and I automate the work behind them with n8n, Zapier, Google Sheets, Telegram and AI. Below are four projects, from a hair brand's mobile store to a paper-free sales floor for a book publisher.</p>
+    </div>
+    <figure class="portrait">
+      <img src="img/photo.jpg" alt="Ajibola Aishat in a sage green scarf and cream pleated top" width="900" height="1275">
+    </figure>
+  </section>
+
+  <nav class="index" aria-label="Selected work">
+    <a href="#camorra"><span class="k">Website design &amp; build</span><span class="t">Camorra Hair</span><span class="d">Mobile store, checkout and live order tracking</span></a>
+    <a href="#prime-sales"><span class="k">n8n automation</span><span class="t">Prime Publishers</span><span class="d">A paper sales floor rebuilt with forms, Sheets and Telegram</span></a>
+    <a href="#prime-bot"><span class="k">Telegram chatbot</span><span class="t">PRIME Lead Bot</span><span class="d">Conversational lead capture with email follow-up</span></a>
+    <a href="#james"><span class="k">AI audit &amp; SOP</span><span class="t">James, Consultant</span><span class="d">Lead follow-up that answers in under 3 minutes</span></a>
+    <a href="#velora"><span class="k">Brand website</span><span class="t">VELORA</span><span class="d">A scroll-driven shoe store with a menswear lookbook</span></a>
+  </nav>
+
+  <!-- ============ CAMORRA ============ -->
+  <article class="case" id="camorra">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">01 · Website &amp; mobile shopping experience</p>
+        <h2>Camorra <em>Hair</em></h2>
+        <a class="live" href="https://camorrahair.netlify.app/" target="_blank" rel="noopener">View the live site <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="meta">
+        <div><dt>Client</dt><dd>Camorra Hair, Lagos</dd></div>
+        <div><dt>Role</dt><dd>Design &amp; build</dd></div>
+        <div><dt>Scope</dt><dd>Shop to doorstep</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>The brief</h3>
+        <p class="prose">Camorra Hair sells custom human-hair units styled in its Lagos studio. A wig is a ₦165,000 to ₦455,000 purchase, so buyers want to see the hair move before they pay, and they want to know exactly where their unit is once it leaves the studio.</p>
+      </div>
+      <div>
+        <h3>What I designed</h3>
+        <ul class="ticks">
+          <li>Video-first catalogue: every unit has a 7-second clip, with a Photo / Video toggle on the detail page.</li>
+          <li>Length selector (20", 24", 28") that updates the price and the Add to bag button live.</li>
+          <li>Checkout with Express or Standard delivery and Card or Bank transfer, priced in naira.</li>
+          <li>Order tracking from Packed to Out for delivery to Delivered, with a map and the rider's name.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow" role="group" aria-label="Customer journey">
+      <ol>
+        <li><div class="node trigger"><div class="ty">Start</div><div class="nm">Sign in or skip</div></div></li>
+        <li><div class="node"><div class="ty">Browse</div><div class="nm">Video catalogue</div></div></li>
+        <li><div class="node"><div class="ty">Detail</div><div class="nm">Length &amp; quantity</div></div></li>
+        <li><div class="node"><div class="ty">Bag</div><div class="nm">Subtotal + delivery</div></div></li>
+        <li><div class="node"><div class="ty">Checkout</div><div class="nm">Card or transfer</div></div></li>
+        <li><div class="node"><div class="ty">Track</div><div class="nm">Rider to doorstep</div></div></li>
+      </ol>
+    </div>
+    <p class="flow-cap">11 screens, one path from first look to delivered.</p>
+
+    <div class="wide"><img src="img/camorra-flow.jpg" alt="Eleven Camorra Hair app screens from sign-in to delivered order" width="1980" height="320"></div>
+    <p class="wide-cap">The full flow. Scroll sideways to see every screen.</p>
+
+    <div class="gallery g-3">
+      <figure class="shot crop"><button type="button" data-cap="Catalogue: each unit card shows length, texture, price and a video badge."><img src="img/camorra-grid.jpg" alt="Camorra Hair catalogue grid" width="410" height="860"></button><figcaption>Catalogue grid</figcaption></figure>
+      <figure class="shot"><button type="button" data-cap="Unit details: video playback, rating, length options and a live-priced Add to bag button."><img src="img/camorra-detail.jpg" alt="Copper Cinnamon unit detail page" width="700" height="1244"></button><figcaption>Unit details, Copper Cinnamon</figcaption></figure>
+      <div class="shot" style="align-self:center">
+        <p class="quote" style="margin-top:0">“Body wave unit with pre-plucked hairline. Glueless-ready and customised in our Lagos studio.”</p>
+        <p class="flow-cap">Product copy written in the brand's voice.</p>
+      </div>
+    </div>
+  </article>
+
+  <!-- ============ PRIME SALES ============ -->
+  <article class="case" id="prime-sales">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">02 · Sales process automation</p>
+        <h2>Prime Publishers, <em>off paper</em></h2>
+        <a class="live" href="https://prime-publisher-books.netlify.app/" target="_blank" rel="noopener">View the live project <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="meta">
+        <div><dt>Client</dt><dd>Book production business</dd></div>
+        <div><dt>Stack</dt><dd>n8n · Google Sheets</dd></div>
+        <div><dt>Alerts</dt><dd>Telegram · Email</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>The problem</h3>
+        <ul class="ticks problem">
+          <li>Every sale was written two or three times as the customer moved from the gate to Room 1, Room 2 and Room 3.</li>
+          <li>Reps added totals by hand, so prices could be wrong.</li>
+          <li>Paper books and stamps were easy to lose or alter, and staff in one room could not see what another had done.</li>
+          <li>The owner could not see daily revenue without counting through the books.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>The solution</h3>
+        <p class="prose">I replaced each paper step with a web form. The forms share one <strong>Order ID</strong>, Google Sheets holds the record, and Telegram tells the next room what to do. One entry per sale, totals pulled from the price list, and books can't be released for an unpaid order.</p>
+      </div>
+    </div>
+
+    <div class="flow" role="group" aria-label="Order workflow">
+      <ol>
+        <li><div class="node trigger"><div class="ty">Form</div><div class="nm">Gate sign-in</div></div></li>
+        <li><div class="node"><div class="ty">Room 1</div><div class="nm">Order + auto total</div></div></li>
+        <li><div class="node"><div class="ty">Telegram</div><div class="nm">Cashier alerted</div></div></li>
+        <li><div class="node"><div class="ty">Room 3</div><div class="nm">Payment checked</div></div></li>
+        <li><div class="node"><div class="ty">Telegram</div><div class="nm">Warehouse prepares</div></div></li>
+        <li><div class="node"><div class="ty">Email</div><div class="nm">HTML receipt</div></div></li>
+        <li><div class="node"><div class="ty">Release</div><div class="nm">Gate cleared</div></div></li>
+        <li><div class="node trigger"><div class="ty">6 PM daily</div><div class="nm">Owner report</div></div></li>
+      </ol>
+    </div>
+    <p class="flow-cap">5 workflows in one n8n project: new sale, payment, release, gate log and the daily report.</p>
+
+    <div class="ba">
+      <table>
+        <thead><tr><th>Step</th><th>Before</th><th>After</th></tr></thead>
+        <tbody>
+          <tr><td>Gate</td><td>Paper sign-in book</td><td>Form logs name, address, phone, time in and time out</td></tr>
+          <tr><td>Room 1</td><td>Rep writes the order and adds prices</td><td>Prices looked up and totalled; an Order ID is created</td></tr>
+          <tr><td>Room 2</td><td>Details copied into a second book</td><td>Removed. The order saves instantly and the cashier gets a Telegram alert</td></tr>
+          <tr><td>Room 3</td><td>Payment confirmed and stamped</td><td>Amount checked against the total; order marked Paid</td></tr>
+          <tr><td>Warehouse</td><td>Books brought out when called for</td><td>Telegram tells the store team what to prepare</td></tr>
+          <tr><td>Release</td><td>Customer signs for books</td><td>Order marked Collected; the gate is told the customer can exit</td></tr>
+          <tr><td>Receipt</td><td>None</td><td>Designed HTML receipt emailed to the customer</td></tr>
+          <tr><td>Reporting</td><td>Manual counting</td><td>6 PM Telegram summary of orders, revenue and open items</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="figs">
+      <div class="fig hl"><div class="n">1</div><div class="l">entry per sale, down from 2 or 3</div></div>
+      <div class="fig"><div class="n">7</div><div class="l">orders on one test day</div></div>
+      <div class="fig"><div class="n"><small>₦</small>897k</div><div class="l">paid revenue in that day's report</div></div>
+      <div class="fig"><div class="n">0</div><div class="l">orders left awaiting payment</div></div>
+    </div>
+
+    <figure class="shot wide-shot" style="margin-top:40px"><button type="button" data-cap="The n8n canvas: sale, payment, release, gate and daily-report workflows."><img src="img/prime-workflow.jpg" alt="n8n workflow canvas for Prime Publishers" width="1600" height="900"></button><figcaption>The n8n build</figcaption></figure>
+
+    <div class="gallery g-phones">
+      <figure class="shot crop"><button type="button" data-cap="Cashier channel: each new order arrives with its total, then a cleared-to-exit message. Customer names are blurred."><img src="img/prime-cashier.jpg" alt="Telegram new order alerts"></button><figcaption>Cashier alerts</figcaption></figure>
+      <figure class="shot crop"><button type="button" data-cap="Warehouse channel: books to prepare, sent the moment payment is confirmed."><img src="img/prime-warehouse.jpg" alt="Telegram prepare books alerts"></button><figcaption>Warehouse alerts</figcaption></figure>
+      <figure class="shot crop"><button type="button" data-cap="Emailed receipt with Order ID, line items and next steps."><img src="img/prime-receipt.jpg" alt="Payment confirmed email receipt"></button><figcaption>Customer receipt</figcaption></figure>
+      <figure class="shot crop"><button type="button" data-cap="The owner's 6 PM summary on Telegram."><img src="img/prime-report.jpg" alt="Daily Telegram report"></button><figcaption>Owner's daily report</figcaption></figure>
+    </div>
+  </article>
+
+  <!-- ============ PRIME BOT ============ -->
+  <article class="case" id="prime-bot">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">03 · Conversational lead capture</p>
+        <h2>PRIME <em>Lead Bot</em></h2>
+      </div>
+      <dl class="meta">
+        <div><dt>Channel</dt><dd>Telegram</dd></div>
+        <div><dt>Stack</dt><dd>n8n · Sheets · Gmail</dd></div>
+        <div><dt>Output</dt><dd>Lead + email + alert</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>How it works</h3>
+        <p class="prose">A visitor says hi and taps the service they need. The bot then asks for their name, phone and email one question at a time and remembers where each person is in the chat. When the conversation is done, the lead is saved to Google Sheets, the visitor gets a branded thank-you email, and the owner gets a <strong>New PRIME lead</strong> alert on Telegram.</p>
+      </div>
+      <div>
+        <h3>Why it matters</h3>
+        <ul class="ticks">
+          <li>No form to abandon. Tap-to-choose buttons keep answers clean.</li>
+          <li>Every lead is logged, so nobody is lost in a chat history.</li>
+          <li>The visitor hears back instantly, with clear next steps and a link back to Telegram.</li>
+          <li>I built two versions: a /start-command bot and a stateful conversation bot.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow" role="group" aria-label="Bot workflow">
+      <ol>
+        <li><div class="node trigger"><div class="ty">Trigger</div><div class="nm">Telegram message</div></div></li>
+        <li><div class="node"><div class="ty">Code</div><div class="nm">Conversation logic</div></div></li>
+        <li><div class="node"><div class="ty">If</div><div class="nm">Finished?</div></div></li>
+        <li><div class="node"><div class="ty">Sheets</div><div class="nm">Save lead</div></div></li>
+        <li><div class="node"><div class="ty">Gmail</div><div class="nm">Thank-you email</div></div></li>
+        <li><div class="node"><div class="ty">HTTP</div><div class="nm">Notify owner</div></div></li>
+      </ol>
+    </div>
+    <p class="flow-cap">If the chat isn't finished, the bot sends the next question instead.</p>
+
+    <div class="gallery g-phones">
+      <figure class="shot crop"><button type="button" data-cap="Owner alerts for new leads, and the visitor-side conversation below. Lead details are blurred."><img src="img/bot-leads.jpg" alt="Telegram lead alerts and bot conversation"></button><figcaption>Lead alerts &amp; chat</figcaption></figure>
+      <figure class="shot crop"><button type="button" data-cap="The thank-you email the visitor receives. Contact details are blurred."><img src="img/bot-email.jpg" alt="Thank-you email"></button><figcaption>Thank-you email</figcaption></figure>
+      <figure class="shot"><button type="button" data-cap="Version 2 in n8n: conversation logic, Sheets, Gmail and owner notification."><img src="img/bot-workflow.jpg" alt="n8n lead bot workflow"></button><figcaption>Conversation bot in n8n</figcaption></figure>
+      <figure class="shot"><button type="button" data-cap="Version 1: the sequential /start-command bot with client and admin emails."><img src="img/bot-build.jpg" alt="Sequential lead capture bot workflow"></button><figcaption>Sequential bot, v1</figcaption></figure>
+    </div>
+  </article>
+
+  <!-- ============ JAMES ============ -->
+  <article class="case" id="james">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">04 · AI audit, workflow &amp; SOP</p>
+        <h2>James, <em>on autopilot</em></h2>
+      </div>
+      <dl class="meta">
+        <div><dt>Client</dt><dd>Boutique solo consultant</dd></div>
+        <div><dt>Stack</dt><dd>Zapier · AI · Gmail</dd></div>
+        <div><dt>Focus</dt><dd>Lead follow-up</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>The audit</h3>
+        <p class="prose">James, a one-on-one management consultant serving clients across the UK, Ghana and the UAE, was losing 35 to 40 hours a month to admin. Every proposal, report and email was built from scratch, he had no CRM, and his VA couldn't act without him. New leads waited hours or days for a reply.</p>
+      </div>
+      <div>
+        <h3>What I delivered</h3>
+        <ul class="ticks">
+          <li>An audit of where his time goes, with before-and-after hours per task.</li>
+          <li>A Zapier pipeline: the VA types READY in a Google Sheet and AI writes a personalised email in James's voice.</li>
+          <li>A step-by-step SOP for the VA, plus quality rules and troubleshooting.</li>
+          <li>A prompt library: the main prompt, an enhancement prompt and the agent's system instructions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow" role="group" aria-label="Lead follow-up workflow">
+      <ol>
+        <li><div class="node trigger"><div class="ty">Sheets</div><div class="nm">VA types READY</div></div></li>
+        <li><div class="node"><div class="ty">Zapier</div><div class="nm">Row watched</div></div></li>
+        <li><div class="node"><div class="ty">AI by Zapier</div><div class="nm">Writes the email</div></div></li>
+        <li><div class="node"><div class="ty">Gmail</div><div class="nm">Sends it</div></div></li>
+        <li><div class="node"><div class="ty">Docs + Sheets</div><div class="nm">Record + status Emailed</div></div></li>
+      </ol>
+    </div>
+    <p class="flow-cap">Five tools, one flow. James spends 0 minutes per first-touch email.</p>
+
+    <div class="figs">
+      <div class="fig"><div class="n">35–40</div><div class="l">admin hours lost each month</div></div>
+      <div class="fig hl"><div class="n">18+</div><div class="l">hours a month given back</div></div>
+      <div class="fig hl"><div class="n">3<small> min</small></div><div class="l">to answer each new lead, down from days</div></div>
+      <div class="fig hl"><div class="n">100%</div><div class="l">of leads acknowledged</div></div>
+    </div>
+
+    <p class="quote">“A consultant who responds to every lead within 3 minutes, without being present, is operating at a different level.”</p>
+    <p class="pending"><span class="dot" aria-hidden="true"></span>Brand visuals for this project are on the way. The full 18-page audit and SOP is available on request.</p>
+  </article>
+
+  <!-- ============ VELORA ============ -->
+  <article class="case" id="velora">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">05 · Brand website</p>
+        <h2>VELORA, <em>the pointed edit</em></h2>
+      </div>
+      <dl class="meta">
+        <div><dt>Brand</dt><dd>Pointed heels, Lagos</dd></div>
+        <div><dt>Role</dt><dd>Design &amp; build</dd></div>
+        <div><dt>Built with</dt><dd>HTML · CSS · JavaScript</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>The idea</h3>
+        <p class="prose">VELORA sells pointed-toe heels “made for the woman who’s already decided”. I wanted the site to feel like a fashion editorial, so the shoe is the star: a real nude pump floats over the brand name and turns and tilts as you scroll or move the mouse.</p>
+      </div>
+      <div>
+        <h3>What I built</h3>
+        <ul class="ticks">
+          <li>A scroll story: The Pump, Nude or Noir, an editorial photo and a lookbook that slides sideways.</li>
+          <li>A shop of six heels with real photos, a size picker and a working bag counter.</li>
+          <li>A companion menswear page, Try the Look, with a drag-to-browse carousel and an “In this look” list with prices.</li>
+          <li>No libraries or build step, so it loads fast.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="shot" style="margin-top:40px"><button type="button" data-cap="VELORA opening screen: the nude pump floats over the brand name."><img src="img/velora-hero.jpg" alt="VELORA homepage with a nude pump over the brand name" width="1200" height="750"></button><figcaption>Opening screen</figcaption></figure>
+
+    <div class="gallery g-3" style="margin-top:16px">
+      <figure class="shot"><button type="button" data-cap="The Pointed Edit: the shop, from the ₦48,500 Woven Kitten to the ₦55,000 Rouge."><img src="img/velora-shop.jpg" alt="VELORA shop section" width="1200" height="750"></button><figcaption>The shop</figcaption></figure>
+      <figure class="shot"><button type="button" data-cap="Lookbook: Worn, not posed. The row slides sideways as you scroll."><img src="img/velora-lookbook.jpg" alt="VELORA lookbook" width="1200" height="750"></button><figcaption>Lookbook</figcaption></figure>
+      <figure class="shot"><button type="button" data-cap="Try the Look: the menswear page, with every piece in the look listed and priced."><img src="img/velora-try.jpg" alt="Try the Look menswear page" width="1200" height="750"></button><figcaption>Menswear: Try the Look</figcaption></figure>
+    </div>
+    <div class="gallery g-try" style="margin-top:16px">
+      <figure class="shot"><button type="button" data-cap="VELORA on a phone."><img src="img/velora-phone.jpg" alt="VELORA on a phone" width="390" height="664"></button><figcaption>On a phone</figcaption></figure>
+      <p class="quote" style="margin-top:0">“Pointed toes, slim heels. Made for the woman who’s already decided.”</p>
+    </div>
+  </article>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="about" id="about">
+    <div>
+      <p class="eyebrow">About me</p>
+      <h2>Hi, I'm <em>Aishat</em>.</h2>
+      <div class="prose">
+        <p>I build websites and online stores for brands, and I help small businesses stop running on paper, memory and copy-paste. I look at how work actually moves through a business, find the steps a system should be doing, and build the automation, the SOP and the customer-facing pieces around it.</p>
+        <p>I'm also a <strong>nursing student</strong>. Nursing trains you to follow protocols, record everything accurately and catch the small slip before it becomes a big problem. I bring those same habits to automation: clean handovers between people, records you can trust, and checks that stop mistakes before they reach a customer. It also means I understand how clinics and health businesses work from the inside.</p>
+        <p>In 2026 I won TIBA Academy's Job-Ready Certification Scholarship, and I've been building real systems ever since.</p>
+      </div>
+      <dl class="facts">
+        <div><dt>I build</dt><dd>Websites, automations, chatbots</dd></div>
+        <div><dt>Studying</dt><dd>Nursing</dd></div>
+        <div><dt>Trained at</dt><dd>TIBA Academy, 2026</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ CREDENTIALS ============ -->
+  <section class="cred" id="credentials" style="margin-top:96px">
+    <figure class="shot"><button type="button" data-cap="2026 Job-Ready Certification Scholarship, TIBA Academy (an ACTD-USA accredited training institute)."><img src="img/cert.jpg" alt="TIBA Academy scholarship announcement for Ajibola Aishat" width="900" height="1005"></button></figure>
+    <div>
+      <p class="eyebrow">Credentials</p>
+      <h2>2026 Job-Ready Certification <em style="color:var(--brass)">Scholar</em></h2>
+      <p class="prose">Awarded by TIBA Academy, The Iconic Brand Africa, an ACTD-USA accredited training institute. The James audit was completed as part of TIBA's AI Authority Challenge.</p>
+      <div class="tools" aria-label="Tools">
+        <span>n8n</span><span>Zapier</span><span>Google Sheets</span><span>Telegram Bot API</span><span>Gmail / SMTP</span><span>AI prompt design</span><span>Workflow audits</span><span>SOP writing</span><span>Website design</span><span>Mobile UI design</span><span>HTML, CSS &amp; JavaScript</span><span>GitHub</span><span>Netlify</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <p class="big">Need a website, or have a process that still runs on <em>paper and memory</em>?</p>
+    <div class="contact">
+      <div class="c-card"><span class="lbl">Email</span><span class="val">aishatabiola6@gmail.com</span><div class="c-actions"><button type="button" class="primary" data-copy="aishatabiola6@gmail.com">Copy email</button><a href="mailto:aishatabiola6@gmail.com">Open mail app</a></div></div>
+      <div class="c-card"><span class="lbl">WhatsApp</span><span class="val">+234 913 701 1978</span><div class="c-actions"><a class="primary" href="https://wa.me/2349137011978" target="_blank" rel="noopener">Chat on WhatsApp</a><button type="button" data-copy="+2349137011978">Copy number</button></div></div>
+      <div class="c-card"><span class="lbl">TikTok</span><span class="val">@ayeesha095</span><div class="c-actions"><a class="primary" href="https://www.tiktok.com/@ayeesha095" target="_blank" rel="noopener">View on TikTok</a></div></div>
+    </div>
+    <p class="small">Ajibola Aishat · Website Designer · Brand Operations Architect · AI Automation Specialist · “Strategy built to run on autopilot.”</p>
+  </div>
+</footer>
+
+<dialog id="lb" aria-label="Screenshot">
+  <button class="close" type="button" aria-label="Close">×</button>
+  <img alt="">
+  <p></p>
+</dialog>
+
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=lb.querySelector('img'), cap=lb.querySelector('p');
+  document.querySelectorAll('.shot button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var src=b.querySelector('img');
+      im.src=src.getAttribute('src'); im.alt=src.alt; cap.textContent=b.dataset.cap||'';
+      if(lb.showModal) lb.showModal();
+    });
+  });
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    var label=b.textContent;
+    b.addEventListener('click',function(){
+      var done=function(){b.textContent='Copied';setTimeout(function(){b.textContent=label},1600)};
+      var fallback=function(){var v=b.closest('.c-card').querySelector('.val');var r=document.createRange();r.selectNodeContents(v);var s=getSelection();s.removeAllRanges();s.addRange(r);b.textContent='Selected, press copy';setTimeout(function(){b.textContent=label},2200)};
+      try{navigator.clipboard.writeText(b.dataset.copy).then(done,fallback)}catch(e){fallback()}
+    });
+  });
+  lb.querySelector('.close').addEventListener('click',function(){lb.close()});
+  lb.addEventListener('click',function(e){ if(e.target===lb) lb.close(); });
+})();
+</script>
+</body>
+</html>
