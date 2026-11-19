@@ -64,7 +64,9 @@ p{margin:0}
 
 /* index of work */
 .g-try{grid-template-columns:minmax(0,220px) 1fr;align-items:center}
-.index{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.index a:nth-child(4){padding-left:0;border-left:0}
+.index a:nth-child(n+4){border-top:1px solid var(--line)}
+.index{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .index a{display:flex;flex-direction:column;gap:6px;padding:22px 20px 22px 0;text-decoration:none;min-width:0}
 .index a + a{padding-left:20px;border-left:1px solid var(--line)}
 .index .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
@@ -190,6 +192,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
   .portrait{justify-self:start;width:min(360px,100%)}
   .index{grid-template-columns:1fr 1fr}
   .index a:nth-child(3),.index a:nth-child(5){padding-left:0;border-left:0}
+  .index a:nth-child(4),.index a:nth-child(6){padding-left:20px;border-left:1px solid var(--line)}
   .index a:nth-child(n+3){border-top:1px solid var(--line)}
   .case-head,.case-body{grid-template-columns:1fr;gap:24px}
   .g-phones{grid-template-columns:repeat(2,1fr)}
@@ -228,6 +231,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
       <a href="#prime-bot">Lead bot</a>
       <a href="#james">James</a>
       <a href="#velora">VELORA</a>
+      <a href="#preshy">Preshy</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#credentials">Credentials</a>
@@ -239,7 +243,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
       <p class="eyebrow">Portfolio · 2026</p>
       <h1>Systems that run the <em>busywork</em>, so the business can run itself.</h1>
       <p class="role">Website Designer · AI Automation Specialist</p>
-      <p class="lede">I design websites and online stores for brands, and I set up the systems behind them, so orders, payments and customer messages take care of themselves. Here are five things I've built.</p>
+      <p class="lede">I design websites and online stores for brands, and I set up the systems behind them, so orders, payments and customer messages take care of themselves. Here are six things I've built.</p>
     </div>
     <figure class="portrait">
       <img src="img/photo.jpg" alt="Ajibola Aishat in a sage green scarf and cream pleated top" width="900" height="1275">
@@ -252,6 +256,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
     <a href="#prime-bot"><span class="k">Telegram chatbot</span><span class="t">PRIME Lead Bot</span><span class="d">Conversational lead capture with email follow-up</span></a>
     <a href="#james"><span class="k">AI audit &amp; SOP</span><span class="t">James, Consultant</span><span class="d">Lead follow-up that answers in under 3 minutes</span></a>
     <a href="#velora"><span class="k">Brand website</span><span class="t">VELORA</span><span class="d">A scroll-driven shoe store with a menswear lookbook</span></a>
+    <a href="#preshy"><span class="k">E-commerce website</span><span class="t">Preshy Emporium</span><span class="d">A private online boutique with payments and order automation</span></a>
   </nav>
 
   <!-- ============ CAMORRA ============ -->
@@ -526,6 +531,50 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
       <figure class="shot"><button type="button" data-cap="VELORA on a phone."><img src="img/velora-phone.jpg" alt="VELORA on a phone" width="390" height="664"></button><figcaption>On a phone</figcaption></figure>
       <p class="quote" style="margin-top:0">“Pointed toes, slim heels. Made for the woman who’s already decided.”</p>
     </div>
+  </article>
+
+  <!-- ============ PRESHY ============ -->
+  <article class="case" id="preshy">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">06 · E-commerce website</p>
+        <h2>Preshy <em>Emporium</em></h2>
+        <a class="live" href="https://preshy-emporium.netlify.app/" target="_blank" rel="noopener">View the live site <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="meta">
+        <div><dt>Client</dt><dd>Intimate wellness boutique</dd></div>
+        <div><dt>Role</dt><dd>Design, build &amp; automation</dd></div>
+        <div><dt>Payments</dt><dd>Flutterwave</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>The brief</h3>
+        <p class="prose">Preshy Emporium sells intimate wellness products, so customers care about privacy as much as the products. The store had to feel warm and discreet, make paying easy, and handle each order without the owner chasing it by hand.</p>
+      </div>
+      <div>
+        <h3>What I built</h3>
+        <ul class="ticks">
+          <li>A full storefront: opening page, shop with categories and search, product pages, saved items and a cart.</li>
+          <li>Sign-in with an emailed code or a password, plus welcome and order emails.</li>
+          <li>Flutterwave checkout, with each payment verified before the order is accepted.</li>
+          <li>Paid orders go to a Google Sheet and the customer gets a confirmation email, with a WhatsApp hand-off for questions.</li>
+          <li>Discreet packaging and private checkout made clear on every page, plus a policies page.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="flow" role="group" aria-label="Preshy order flow">
+      <ol>
+        <li><div class="node trigger"><div class="ty">Shop</div><div class="nm">Browse &amp; add to cart</div></div></li>
+        <li><div class="node"><div class="ty">Sign in</div><div class="nm">Code or password</div></div></li>
+        <li><div class="node"><div class="ty">Flutterwave</div><div class="nm">Pay securely</div></div></li>
+        <li><div class="node"><div class="ty">Check</div><div class="nm">Payment verified</div></div></li>
+        <li><div class="node"><div class="ty">Sheets</div><div class="nm">Order recorded</div></div></li>
+        <li><div class="node"><div class="ty">Email</div><div class="nm">Customer confirmed</div></div></li>
+      </ol>
+    </div>
+    <p class="flow-cap">From cart to confirmed order with no manual steps for the owner.</p>
   </article>
 
   <!-- ============ ABOUT ============ -->
