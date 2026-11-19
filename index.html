@@ -64,7 +64,10 @@ p{margin:0}
 
 /* index of work */
 .g-try{grid-template-columns:minmax(0,220px) 1fr;align-items:center}
-.index{display:grid;grid-template-columns:repeat(5,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.g-2{grid-template-columns:1fr 1fr}
+.index a:nth-child(4){padding-left:0;border-left:0}
+.index a:nth-child(n+4){border-top:1px solid var(--line)}
+.index{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .index a{display:flex;flex-direction:column;gap:6px;padding:22px 20px 22px 0;text-decoration:none;min-width:0}
 .index a + a{padding-left:20px;border-left:1px solid var(--line)}
 .index .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--brass)}
@@ -209,6 +212,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
   .g-3{grid-template-columns:1fr 1fr;gap:12px}
   .g-3 > div.shot{grid-column:1/-1}
   .g-try{grid-template-columns:1fr}
+  .g-2{grid-template-columns:1fr}
   .g-try .shot{max-width:240px}
   .quote{font-size:24px}
 }
@@ -229,6 +233,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
       <a href="#prime-bot">Lead bot</a>
       <a href="#james">James</a>
       <a href="#preshy">Preshy</a>
+      <a href="#shop-camorra">Shop Camorra</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
       <a href="#credentials">Credentials</a>
@@ -240,7 +245,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
       <p class="eyebrow">Portfolio · 2026</p>
       <h1>Systems that run the <em>busywork</em>, so the business can run itself.</h1>
       <p class="role">Website Designer · AI Automation Specialist</p>
-      <p class="lede">I design websites and online stores for brands, and I set up the systems behind them, so orders, payments and customer messages take care of themselves. Here are five things I've built.</p>
+      <p class="lede">I design websites and online stores for brands, and I set up the systems behind them, so orders, payments and customer messages take care of themselves. Here are six things I've built.</p>
     </div>
     <figure class="portrait">
       <img src="img/photo.jpg" alt="Ajibola Aishat in a sage green scarf and cream pleated top" width="900" height="1275">
@@ -253,6 +258,7 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
     <a href="#prime-bot"><span class="k">Telegram chatbot</span><span class="t">PRIME Lead Bot</span><span class="d">Conversational lead capture with email follow-up</span></a>
     <a href="#james"><span class="k">AI audit &amp; SOP</span><span class="t">James, Consultant</span><span class="d">Lead follow-up that answers in under 3 minutes</span></a>
     <a href="#preshy"><span class="k">E-commerce website</span><span class="t">Preshy Emporium</span><span class="d">A private online boutique with payments and order automation</span></a>
+    <a href="#shop-camorra"><span class="k">Landing page</span><span class="t">Shop Camorra</span><span class="d">A limited-drop fashion launch page that grows a mailing list</span></a>
   </nav>
 
   <!-- ============ CAMORRA ============ -->
@@ -538,6 +544,45 @@ dialog .close{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.6);colo
       <figure class="shot crop"><button type="button" data-cap="Product page: photos, colour options, price and Add to bag."><img src="img/preshy-product.jpg" alt="Preshy Emporium product page" width="390" height="791"></button><figcaption>Product page</figcaption></figure>
       <figure class="shot crop"><button type="button" data-cap="Bag: quantities, subtotal and checkout. Delivery is confirmed on WhatsApp after payment."><img src="img/preshy-bag.jpg" alt="Preshy Emporium bag and checkout" width="390" height="726"></button><figcaption>Bag &amp; checkout</figcaption></figure>
     </div>
+  </article>
+
+  <!-- ============ SHOP CAMORRA ============ -->
+  <article class="case" id="shop-camorra">
+    <div class="case-head">
+      <div>
+        <p class="eyebrow">06 · Landing page</p>
+        <h2>Shop <em>Camorra</em></h2>
+        <a class="live" href="https://camorra-landing-page--aishatabiola6.replit.app/" target="_blank" rel="noopener">View the live site <span aria-hidden="true">↗</span></a>
+      </div>
+      <dl class="meta">
+        <div><dt>Client</dt><dd>Shop Camorra, women’s fashion</dd></div>
+        <div><dt>Role</dt><dd>Design &amp; build</dd></div>
+        <div><dt>Built on</dt><dd>Replit</dd></div>
+      </dl>
+    </div>
+    <div class="case-body">
+      <div>
+        <h3>The brief</h3>
+        <p class="prose">Shop Camorra sells clothing in limited drops that never restock. The brand needed one page that makes each drop feel urgent, shows what’s in stock right now, and turns visitors into members who hear about the next drop first.</p>
+      </div>
+      <div>
+        <h3>What I built</h3>
+        <ul class="ticks">
+          <li>A bold opening, “Fashion that doesn’t ask for permission”, with Join the Family and View Collection buttons.</li>
+          <li>A Why Camorra section on quality, limited drops and member perks.</li>
+          <li>The Current Drop: 12 pieces from ₦25,000 to ₦40,000, with New In, Best Seller and Sold Out labels and a Notify Me option for sold-out items.</li>
+          <li>A free lookbook, “5 Ways to Transition Your Sets from Sunrise to Sundown”, offered in exchange for joining the Muse mailing list.</li>
+          <li>A WhatsApp button and Instagram and TikTok links for ordering and support.</li>
+        </ul>
+      </div>
+    </div>
+
+    <figure class="shot" style="margin-top:40px"><button type="button" data-cap="Shop Camorra opening screen: new collection, limited drops."><img src="img/sc-hero.jpg" alt="Shop Camorra landing page opening screen" width="1200" height="675"></button><figcaption>Opening screen</figcaption></figure>
+    <div class="gallery g-2" style="margin-top:16px">
+      <figure class="shot"><button type="button" data-cap="Why Camorra: four reasons to buy, from handpicked quality to member access."><img src="img/sc-why.jpg" alt="Why Camorra section" width="1200" height="574"></button><figcaption>Why Camorra</figcaption></figure>
+      <figure class="shot"><button type="button" data-cap="The free Camorra Muse lookbook, offered for joining the mailing list."><img src="img/sc-lookbook.jpg" alt="Camorra Muse lookbook sign-up" width="1200" height="866"></button><figcaption>Lookbook sign-up</figcaption></figure>
+    </div>
+    <figure class="shot" style="margin-top:16px"><button type="button" data-cap="The Current Drop: 12 pieces with prices, stock labels and Order or Notify Me buttons."><img src="img/sc-collection.jpg" alt="Shop Camorra current drop collection" width="1200" height="1525"></button><figcaption>The Current Drop</figcaption></figure>
   </article>
 
   <!-- ============ ABOUT ============ -->
