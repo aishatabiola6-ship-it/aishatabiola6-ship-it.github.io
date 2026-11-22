@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Heel Edit | Luxury Heels</title>
-<meta name="description" content="Statement heels, ballet flats, boots, slides and sandals. Pick your pair and order on WhatsApp.">
+<meta name="description" content="Statement heels, ballet flats, boots, sneakers, slides and sandals. Pick your pair and order on WhatsApp.">
 <meta property="og:title" content="The Heel Edit">
 <meta property="og:description" content="Statement heels, slingbacks and sandals. Order on WhatsApp.">
 <meta property="og:image" content="img/rose-crystal.jpg">
@@ -239,6 +239,8 @@
     .filter-stack{align-items:flex-start;width:100%}
     .filters{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:4px;scrollbar-width:none}
     .chip{white-space:nowrap}
+    .groups{max-width:100%;overflow-x:auto;scrollbar-width:none}
+    .tab{white-space:nowrap;padding:.5em 1em;letter-spacing:.1em}
   }
   @media (max-width:560px){
     .grid{grid-template-columns:1fr 1fr;gap:24px 12px}
@@ -280,9 +282,9 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">New season · Heels, flats &amp; boots</p>
+        <p class="eyebrow">New season · Just landed</p>
         <h1>Step in like you <em>own the room.</em></h1>
-        <p class="lead">Statement heels, mesh ballet flats, cosy boots and crystal sandals, picked one pair at a time. Choose your size, tap order, and we'll sort the rest on WhatsApp.</p>
+        <p class="lead">Statement heels, mesh ballet flats, cosy boots and fresh sneakers, picked one pair at a time. Choose your size, tap order, and we'll sort the rest on WhatsApp.</p>
         <div class="hero-ctas">
           <a href="#shop" class="btn btn-dark">Shop the edit</a>
           <a href="#" class="btn btn-line js-wa">Chat with us</a>
@@ -537,7 +539,7 @@ const PRODUCTS = [
   {id:"teddy-slipper", group:"Flats", name:"Teddy Bow Slipper", cat:"Slippers", price:35000,
    imgs:["teddy-slipper.jpg"], colors:[["Camel","#c9a988"]],
    desc:"Fluffy faux-fur slipper with a tan leather bow strap. Cosy at home and out."},
-  {id:"terrace-sneaker", group:"Flats", name:"Cream & Cocoa Terrace Sneaker", cat:"Sneakers", price:95000, badge:"New",
+  {id:"terrace-sneaker", group:"Sneakers", name:"Cream & Cocoa Terrace Sneaker", cat:"Retro", price:95000, badge:"New",
    imgs:["terrace-sneaker.jpg"], colors:[["Cream / cocoa","#efe6d2"]],
    desc:"Low-profile leather sneaker in cream with cocoa stripes, a suede toe and a gum-brown sole."},
 
@@ -587,6 +589,26 @@ const PRODUCTS = [
   {id:"belted-fur-boot", group:"Boots", name:"Belted Faux-Fur Boot", cat:"Knee-high boots", price:125000,
    imgs:["belted-fur-boot.jpg"], colors:[["Black","#121212"]],
    desc:"Shaggy faux fur wrapped in two eyelet belts with gold buckles, on a slim stiletto."},
+
+  /* ---- Sneakers ---- */
+  {id:"suede-racer", group:"Sneakers", name:"Suede Racer Sneaker", cat:"Retro", price:75000, badge:"2 colours",
+   imgs:["racer-pink.jpg","racer-yellow.jpg"], colors:[["Blush pink","#eab3c3",0],["Butter yellow","#f0de94",1]],
+   desc:"Slim low-profile suede racer with a contrast side stripe and a grippy wraparound sole."},
+  {id:"monogram-trainer", group:"Sneakers", name:"Monogram Denim Trainer", cat:"Court", price:260000, badge:"Statement",
+   imgs:["trainer-pink.jpg","trainer-denim.jpg"], colors:[["Pink","#e981b2",0],["Denim blue","#2f5b94",1]],
+   desc:"Chunky court trainer in monogram denim and embossed white leather, with fat rope laces."},
+  {id:"logo-runner", group:"Sneakers", name:"Monochrome Logo Runner", cat:"Runners", price:230000,
+   imgs:["logo-runner.jpg"], colors:[["White / black","#f2f0ec"]],
+   desc:"Suede, mesh and leather runner in soft white with a black logo patch and a sculpted sole."},
+  {id:"suede-xl", group:"Sneakers", name:"Black & Pink Suede XL", cat:"Court", price:85000, badge:"Bestseller",
+   imgs:["suede-xl.jpg"], colors:[["Black / pink","#151515"]],
+   desc:"Puffy black suede skate shoe with a pink stripe, chunky pink laces and a thick sole."},
+  {id:"wine-lowtop", group:"Sneakers", name:"Wine & White Low-Top", cat:"Court", price:80000,
+   imgs:["wine-lowtop.jpg"], colors:[["Wine / white","#6b1a26"]],
+   desc:"Classic two-tone leather low-top in wine and white. Goes with everything."},
+  {id:"plum-runner", group:"Sneakers", name:"Blush & Plum Runner", cat:"Runners", price:78000,
+   imgs:["plum-runner.jpg"], colors:[["Blush / plum","#f2b2c6"]],
+   desc:"Retro mesh runner in blush with plum overlays on a cushioned, chunky sole."},
 ];
 PRODUCTS.forEach(p => p.group = p.group || "Heels");
 
@@ -602,14 +624,15 @@ $("#copy").textContent = `© ${new Date().getFullYear()} ${SHOP.name}`;
 $("#statCount").textContent = PRODUCTS.length;
 
 // marquee
-const words = ["Crystal slingbacks","Mesh ballet flats","Bridal heels","Everyday slides","Velvet Mary Janes","Fur-lined boots","Delivered to your door"];
+const words = ["Crystal slingbacks","Mesh ballet flats","Bridal heels","Everyday slides","Velvet Mary Janes","Fur-lined boots","Fresh sneakers","Delivered to your door"];
 $("#marquee").innerHTML = [...words,...words,...words,...words].map(w=>`<span>${w}</span>`).join("");
 
 // filters + grid
-const groups = ["All", ...new Set(PRODUCTS.map(p => p.group))];
+const ORDER = ["Heels","Flats","Boots","Sneakers"];
+const groups = ["All", ...new Set(PRODUCTS.map(p => p.group))].sort((a,b) => (a==="All"?-1:ORDER.indexOf(a)) - (b==="All"?-1:ORDER.indexOf(b)));
 let group = "All", current = "All";
 function renderGroups(){
-  $("#groups").innerHTML = groups.map(g => `<button class="tab" role="tab" aria-selected="${g===group}" data-g="${g}">${g==="All"?"All shoes":g}</button>`).join("");
+  $("#groups").innerHTML = groups.map(g => `<button class="tab" role="tab" aria-selected="${g===group}" data-g="${g}">${g==="All"?"All":g}</button>`).join("");
   const cats = ["All", ...new Set(PRODUCTS.filter(p => group==="All" || p.group===group).map(p => p.cat))];
   $("#filters").innerHTML = cats.map(c => `<button class="chip" aria-pressed="${c===current}" data-cat="${c}">${c==="All"?"All styles":c}</button>`).join("");
 }
