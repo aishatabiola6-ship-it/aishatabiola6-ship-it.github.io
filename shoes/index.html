@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Heel Edit | Luxury Heels</title>
-<meta name="description" content="Statement heels, ballet flats, slides and sandals. Pick your pair and order on WhatsApp.">
+<meta name="description" content="Statement heels, ballet flats, boots, slides and sandals. Pick your pair and order on WhatsApp.">
 <meta property="og:title" content="The Heel Edit">
 <meta property="og:description" content="Statement heels, slingbacks and sandals. Order on WhatsApp.">
 <meta property="og:image" content="img/rose-crystal.jpg">
@@ -280,9 +280,9 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">New season · Heels &amp; flats</p>
+        <p class="eyebrow">New season · Heels, flats &amp; boots</p>
         <h1>Step in like you <em>own the room.</em></h1>
-        <p class="lead">Statement heels, mesh ballet flats, slides and crystal sandals, picked one pair at a time. Choose your size, tap order, and we'll sort the rest on WhatsApp.</p>
+        <p class="lead">Statement heels, mesh ballet flats, cosy boots and crystal sandals, picked one pair at a time. Choose your size, tap order, and we'll sort the rest on WhatsApp.</p>
         <div class="hero-ctas">
           <a href="#shop" class="btn btn-dark">Shop the edit</a>
           <a href="#" class="btn btn-line js-wa">Chat with us</a>
@@ -331,7 +331,7 @@
       <div class="reveal">
         <p class="eyebrow">Our story</p>
         <h2>Shoes chosen for the moments you'll remember.</h2>
-        <p>We hand-pick every pair for its finish, its fit and how it feels after hours on your feet. Weddings, dinners, brunch, the office and lazy Sundays: there's a pair for each of them here, from stilettos to slides.</p>
+        <p>We hand-pick every pair for its finish, its fit and how it feels after hours on your feet. Weddings, dinners, brunch, the office and lazy Sundays: there's a pair for each of them here, from stilettos to slides to fur-lined boots.</p>
         <p>Every order is checked, packed in a box and sent with care.</p>
         <div class="perks">
           <div class="perk"><b>Checked by hand</b><span>Each pair inspected before it ships</span></div>
@@ -537,6 +537,56 @@ const PRODUCTS = [
   {id:"teddy-slipper", group:"Flats", name:"Teddy Bow Slipper", cat:"Slippers", price:35000,
    imgs:["teddy-slipper.jpg"], colors:[["Camel","#c9a988"]],
    desc:"Fluffy faux-fur slipper with a tan leather bow strap. Cosy at home and out."},
+  {id:"terrace-sneaker", group:"Flats", name:"Cream & Cocoa Terrace Sneaker", cat:"Sneakers", price:95000, badge:"New",
+   imgs:["terrace-sneaker.jpg"], colors:[["Cream / cocoa","#efe6d2"]],
+   desc:"Low-profile leather sneaker in cream with cocoa stripes, a suede toe and a gum-brown sole."},
+
+  /* ---- Boots ---- */
+  {id:"cocoa-fur-boot", group:"Boots", name:"Cocoa Fur-Cuff Platform Boot", cat:"Winter boots", price:68000, badge:"Bestseller",
+   imgs:["cocoa-fur-boot.jpg"], colors:[["Cocoa","#6b4a3a"]],
+   desc:"Soft cocoa suede with a fold-over faux-fur cuff on a chunky lug platform."},
+  {id:"cream-quilted-boot", group:"Boots", name:"Cream Quilted Fur Boot", cat:"Winter boots", price:65000,
+   imgs:["cream-quilted-boot.jpg"], colors:[["Cream","#ece6da"]],
+   desc:"Quilted cream upper, a plush faux-fur collar and a lifted platform sole."},
+  {id:"snow-buckle-boot", group:"Boots", name:"Snow Quilted Buckle Boot", cat:"Winter boots", price:60000,
+   imgs:["snow-buckle-boot.jpg"], colors:[["Snow white","#f3efe8"]],
+   desc:"Glossy quilted white with a side buckle and an extra-fluffy faux-fur cuff."},
+  {id:"knit-bow-boot", group:"Boots", name:"Knit Cuff Bow Boot", cat:"Winter boots", price:58000,
+   imgs:["knit-bow-boot.jpg"], colors:[["Chestnut","#b07d52"]],
+   desc:"Chestnut suede platform boot with a ribbed cream knit cuff and a satin bow."},
+  {id:"mocha-buckle-boot", group:"Boots", name:"Mocha Buckle Fur Boot", cat:"Winter boots", price:62000,
+   imgs:["mocha-buckle-boot.jpg"], colors:[["Mocha","#5c3a2a"]],
+   desc:"Mocha suede with a buckled strap, cream faux-fur trim and a high platform."},
+  {id:"chelsea-boot", group:"Boots", name:"Chocolate Chelsea Boot", cat:"Ankle boots", price:55000,
+   imgs:["chelsea-boot.jpg"], colors:[["Chocolate","#4a2e22"]],
+   desc:"Pebbled chocolate leather Chelsea with elastic sides, a pull tab and a chunky lug sole."},
+  {id:"espresso-ankle-boot", group:"Boots", name:"Espresso Monogram Ankle Boot", cat:"Ankle boots", price:220000, badge:"Limited", badgeWine:true,
+   imgs:["espresso-ankle-boot.jpg"], colors:[["Espresso","#3e2a20"]],
+   desc:"Smooth espresso leather on a block heel, with a gold monogram strap and zip pull."},
+  {id:"wine-charm-boot", group:"Boots", name:"Wine Charm Buckle Boot", cat:"Ankle boots", price:72000,
+   imgs:["wine-charm-boot.jpg"], colors:[["Wine","#5a1a24"]],
+   desc:"Wine leather ankle boot with a buckled strap, a crystal flower charm and a block heel."},
+  {id:"metal-tip-boot", group:"Boots", name:"Black Metal-Tip Sock Boot", cat:"Ankle boots", price:65000,
+   imgs:["metal-tip-boot.jpg"], colors:[["Black","#121212"]],
+   desc:"Sleek stretch sock boot with a silver toe tip and a sturdy block heel."},
+  {id:"logo-sock-boot", group:"Boots", name:"Gold Logo Sock Boot", cat:"Ankle boots", price:150000,
+   imgs:["logo-sock-boot.jpg"], colors:[["Black","#121212"]],
+   desc:"Black stretch sock boot with a gold logo plaque, a pointed toe and a block heel."},
+  {id:"croc-bootie", group:"Boots", name:"Noir Croc Sculpted Bootie", cat:"Ankle boots", price:240000, badge:"Statement",
+   imgs:["croc-bootie.jpg"], colors:[["Black croc","#151515"]],
+   desc:"High-shine black croc-effect bootie on a sculpted logo heel."},
+  {id:"slouch-stiletto", group:"Boots", name:"Black Slouch Stiletto Boot", cat:"Ankle boots", price:70000,
+   imgs:["slouch-stiletto.jpg"], colors:[["Black suede","#1a1a1a"]],
+   desc:"Slouchy black suede with a side zip, a pointed toe and a needle heel."},
+  {id:"croc-snap-boot", group:"Boots", name:"Croc Snap Slouch Boot", cat:"Knee-high boots", price:120000,
+   imgs:["croc-snap-boot.jpg"], colors:[["Black","#121212"]],
+   desc:"Ruched black croc-effect shaft with silver snaps, a fold-over top and a patent toe."},
+  {id:"fur-knee-boot", group:"Boots", name:"Black Faux-Fur Knee Boot", cat:"Knee-high boots", price:110000,
+   imgs:["fur-knee-boot.jpg"], colors:[["Black","#121212"]],
+   desc:"Full faux-fur shaft over a black suede pointed stiletto. Pure drama."},
+  {id:"belted-fur-boot", group:"Boots", name:"Belted Faux-Fur Boot", cat:"Knee-high boots", price:125000,
+   imgs:["belted-fur-boot.jpg"], colors:[["Black","#121212"]],
+   desc:"Shaggy faux fur wrapped in two eyelet belts with gold buckles, on a slim stiletto."},
 ];
 PRODUCTS.forEach(p => p.group = p.group || "Heels");
 
@@ -552,7 +602,7 @@ $("#copy").textContent = `© ${new Date().getFullYear()} ${SHOP.name}`;
 $("#statCount").textContent = PRODUCTS.length;
 
 // marquee
-const words = ["Crystal slingbacks","Mesh ballet flats","Bridal heels","Everyday slides","Velvet Mary Janes","Delivered to your door"];
+const words = ["Crystal slingbacks","Mesh ballet flats","Bridal heels","Everyday slides","Velvet Mary Janes","Fur-lined boots","Delivered to your door"];
 $("#marquee").innerHTML = [...words,...words,...words,...words].map(w=>`<span>${w}</span>`).join("");
 
 // filters + grid
