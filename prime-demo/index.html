@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Prime Automation Demo</title>
+<meta name="description" content="Watch one book sale run through the Prime Publishers n8n automation: forms, Google Sheets, Telegram alerts, an emailed receipt and a 6 PM report.">
+<meta property="og:title" content="One sale, zero paper: Prime Publishers automation demo">
+<meta property="og:description" content="Tap play and watch a whole paper sales floor run itself with n8n, Google Sheets and Telegram.">
+<meta property="og:image" content="https://aishatabiola6-ship-it.github.io/img/prime-workflow.jpg">
+<meta name="theme-color" content="#130A15">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#130A15;--bg-2:#1A0F1D;--card:#21142A;--card-2:#2A1A33;--line:#3A2944;
+  --ink:#F4ECF3;--muted:#B7A7BB;--gold:#E6B858;--gold-2:#F5D58E;--gold-ink:#1B1006;
+  --glow:rgba(230,184,88,.28);--ok:#5FCB8E;--bad:#F07167;--tg:#2AABEE;
+  --f-display:"Syne","Avenir Next","Segoe UI",sans-serif;
+  --f-accent:"Instrument Serif",Georgia,serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;background:
+  radial-gradient(600px 420px at 85% 0%, rgba(230,184,88,.13), transparent 70%),
+  radial-gradient(700px 520px at 0% 70%, rgba(150,70,150,.15), transparent 70%)}
+.wrap{position:relative;z-index:1;max-width:1180px;margin:0 auto;padding:20px max(16px,env(safe-area-inset-left)) 60px}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+.back{font:500 13px var(--f-mono);color:var(--muted);text-decoration:none}
+.back:hover{color:var(--gold)}
+.label{font:500 12px var(--f-mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+h1{font:800 clamp(34px,6vw,64px)/1 var(--f-display);margin:10px 0 12px;letter-spacing:-.01em}
+h1 em,h2 em{font-family:var(--f-accent);font-style:italic;font-weight:400;color:var(--gold)}
+h2{font:800 20px/1.1 var(--f-display);margin:0}
+.lede{color:var(--muted);max-width:640px;margin:0}
+.btn{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--f-body);padding:12px 18px;border-radius:999px;border:1px solid var(--line);color:var(--ink);background:var(--card);cursor:pointer;transition:transform .15s,border-color .15s,box-shadow .15s;text-decoration:none}
+.btn:hover:not(:disabled){border-color:var(--gold);transform:translateY(-1px)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btn.gold{background:var(--gold);color:var(--gold-ink);border-color:var(--gold);box-shadow:0 8px 30px var(--glow)}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:24px 0 8px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--bg-2)}
+.seg button{font:600 13px var(--f-body);border:0;background:none;color:var(--muted);padding:8px 13px;border-radius:999px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--card-2);color:var(--ink);box-shadow:inset 0 0 0 1px var(--gold)}
+.status{font:500 13px var(--f-mono);color:var(--muted);margin:6px 0 22px;min-height:20px}
+.status b{color:var(--gold);font-weight:500}
+
+.grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:18px;align-items:start}
+.panel{background:linear-gradient(180deg,var(--card),var(--bg-2));border:1px solid var(--line);border-radius:18px;padding:18px}
+.panel-h{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.chip{font:500 11px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;padding:4px 9px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.chip.live{color:var(--ok);border-color:rgba(95,203,142,.4)}
+.left{position:sticky;top:14px}
+
+/* workflow */
+.flow{list-style:none;margin:0;padding:0;position:relative}
+.node{position:relative;display:grid;grid-template-columns:38px 1fr;gap:12px;padding:0 0 14px}
+.node:last-child{padding-bottom:0}
+.node::before{content:"";position:absolute;left:18px;top:38px;bottom:0;width:2px;background:var(--line);transition:background .4s}
+.node:last-child::before{display:none}
+.node.done::before{background:var(--gold)}
+.ico{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--bg-2);border:1px solid var(--line);font-size:17px;transition:all .3s;position:relative;z-index:1}
+.node.run .ico{border-color:var(--gold);box-shadow:0 0 0 4px rgba(230,184,88,.15),0 0 24px var(--glow);animation:pulse 1s ease-in-out infinite}
+.node.done .ico{border-color:var(--gold);background:rgba(230,184,88,.12)}
+.node.blocked .ico{border-color:var(--bad);background:rgba(240,113,103,.14);box-shadow:0 0 0 4px rgba(240,113,103,.15)}
+.node.skip{opacity:.4}
+@keyframes pulse{50%{transform:scale(1.07)}}
+.nt{font-weight:700;font-size:14px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.nt .tool{font:500 10.5px var(--f-mono);color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px}
+.nd{color:var(--muted);font-size:13px;line-height:1.45;margin-top:2px}
+.node.run .nt{color:var(--gold-2)}
+.node.blocked .nt{color:var(--bad)}
+
+.log{margin-top:16px;background:#0D0710;border:1px solid var(--line);border-radius:12px;padding:10px 12px;font:12px/1.6 var(--f-mono);color:var(--muted);height:150px;overflow:auto}
+.log div{white-space:pre-wrap;word-break:break-word}
+.log .t{color:#7d6a82}.log .g{color:var(--gold)}.log .o{color:var(--ok)}.log .r{color:var(--bad)}
+
+/* outputs */
+.outs{display:grid;gap:18px;grid-template-columns:minmax(0,1fr);min-width:0}
+.panel,.left{min-width:0}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
+.tg{background:#0E1621;border-radius:14px;height:360px;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth}
+.tg .empty,.mail .empty{margin:auto;color:#6c7a89;font-size:13px;text-align:center}
+.msg{background:#182533;border-radius:4px 14px 14px 14px;padding:8px 11px 6px;max-width:95%;font-size:13px;line-height:1.45;animation:pop .35s cubic-bezier(.2,.9,.3,1.3) both}
+.msg .from{font-weight:700;font-size:12px;color:var(--tg);display:flex;gap:6px;align-items:center}
+.msg .grp{font:500 10px var(--f-mono);background:rgba(42,171,238,.15);color:#8fd3f7;padding:1px 6px;border-radius:5px}
+.msg .grp.Gate{background:rgba(95,203,142,.15);color:#9be2b9}
+.msg .grp.Warehouse{background:rgba(230,184,88,.15);color:var(--gold-2)}
+.msg .grp.Owner{background:rgba(190,120,230,.18);color:#dcb4f2}
+.msg .body{margin-top:3px;white-space:pre-line}
+.msg .tm{font-size:10.5px;color:#6c7a89;text-align:right;margin-top:2px}
+.msg.alert{background:#3a1d22}
+@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.96)}}
+
+.sheet{overflow-x:auto;border-radius:10px;border:1px solid #2c3b2f}
+table{border-collapse:collapse;width:100%;font-size:12.5px;background:#fff;color:#202124;min-width:520px}
+th,td{border:1px solid #e0e0e0;padding:6px 8px;text-align:left;white-space:nowrap}
+th{background:#f1f3f4;font-weight:600;color:#5f6368;font-size:11.5px}
+td.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.flash td{animation:flash 1.2s ease}
+td.flash{animation:flash 1.2s ease}
+@keyframes flash{0%{background:#fde68a}100%{background:#fff}}
+.pill{display:inline-block;padding:1px 8px;border-radius:999px;font-size:11px;font-weight:600}
+.pill.wait{background:#fef3c7;color:#92400e}.pill.paid{background:#dbeafe;color:#1e40af}.pill.col{background:#dcfce7;color:#166534}
+.tabs{display:flex;gap:4px;margin-top:8px}
+.tabs button{font:600 12px var(--f-body);border:1px solid var(--line);background:var(--bg-2);color:var(--muted);padding:5px 11px;border-radius:7px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:#1e8e3e;border-color:#1e8e3e;color:#fff}
+
+.mail{background:#f6f2ea;border-radius:14px;height:360px;overflow:auto;display:flex;flex-direction:column}
+.receipt{background:#fff;color:#22152a;margin:14px;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(0,0,0,.08);animation:pop .4s ease both}
+.receipt .rh{background:#22152a;color:#fff;padding:14px 16px}
+.receipt .rh b{font-family:var(--f-display);font-size:17px;color:var(--gold)}
+.receipt .rh small{display:block;color:#cbb9cf;font-size:11.5px;margin-top:2px}
+.receipt .rb{padding:12px 16px;font-size:12.5px}
+.receipt .meta{color:#6b5a70;font-size:11.5px;margin-bottom:8px}
+.receipt table{min-width:0;background:none}
+.receipt th,.receipt td{border:0;border-bottom:1px solid #eee;padding:5px 0;white-space:normal}
+.receipt th{background:none}
+.receipt .tot td{font-weight:800;border-bottom:0;padding-top:8px}
+.receipt .paid{display:inline-block;margin-top:10px;color:#166534;background:#dcfce7;border-radius:6px;padding:3px 9px;font-weight:700;font-size:11.5px}
+.mailhdr{padding:10px 14px 0;font-size:12px;color:#5d4f62}
+.mailhdr b{color:#22152a}
+
+.cta{margin-top:30px;display:flex;flex-wrap:wrap;gap:16px;justify-content:space-between;align-items:center;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,rgba(230,184,88,.10),transparent 60%),var(--card)}
+.cta p{margin:4px 0 0;color:var(--muted);max-width:560px}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.stat{flex:1 1 140px;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg-2)}
+.stat b{display:block;font:800 24px var(--f-display);color:var(--gold)}
+.stat span{font-size:12.5px;color:var(--muted)}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .left{position:static}
+  .two{grid-template-columns:minmax(0,1fr)}
+  .tg,.mail{height:300px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <a class="back" href="/">&larr; Ajibola Aishat · Portfolio</a>
+    <span class="chip">Interactive demo · sample data</span>
+  </div>
+
+  <span class="label">Prime Publishers · n8n automation</span>
+  <h1>One sale, <em>zero paper.</em></h1>
+  <p class="lede">This sales floor used to write every sale down two or three times on paper. Tap <strong>Run an order</strong> and watch one customer go from the gate to the warehouse. Every step is handled by n8n, Google Sheets, Telegram and email.</p>
+
+  <div class="controls">
+    <button class="btn gold" id="play">▶ Run an order</button>
+    <button class="btn" id="step">Step ›</button>
+    <button class="btn" id="report">🕕 Jump to 6 PM report</button>
+    <button class="btn" id="reset">Reset</button>
+  </div>
+  <div class="controls" style="margin-top:0">
+    <div class="seg" role="group" aria-label="Scenario">
+      <button aria-pressed="true" data-scn="paid">✅ Customer pays</button>
+      <button aria-pressed="false" data-scn="unpaid">⛔ Tries to leave unpaid</button>
+    </div>
+    <div class="seg" role="group" aria-label="Speed">
+      <button aria-pressed="false" data-spd="0.5">Slow</button>
+      <button aria-pressed="true" data-spd="1">Normal</button>
+      <button aria-pressed="false" data-spd="2.2">Fast</button>
+    </div>
+  </div>
+  <div class="status" id="status" aria-live="polite">Ready. Pick a scenario and run an order.</div>
+
+  <div class="grid">
+    <!-- workflow -->
+    <section class="panel left" aria-label="Workflow">
+      <div class="panel-h"><h2>The workflow</h2><span class="chip" id="wfchip">idle</span></div>
+      <ol class="flow" id="flow"></ol>
+      <div class="log" id="log" aria-label="Execution log"><div><span class="t">n8n</span> Workflow active. Waiting for a form submission…</div></div>
+    </section>
+
+    <!-- outputs -->
+    <div class="outs">
+      <div class="two">
+        <section class="panel" aria-label="Telegram">
+          <div class="panel-h"><h2>Telegram</h2><span class="chip live">● Prime Bot</span></div>
+          <div class="tg" id="tg"><div class="empty">Team alerts will show up here:<br>Cashier · Warehouse · Gate · Owner</div></div>
+        </section>
+        <section class="panel" aria-label="Email">
+          <div class="panel-h"><h2>Customer email</h2><span class="chip">Gmail</span></div>
+          <div class="mail" id="mail"><div class="empty" style="color:#8a7b8f">The receipt is emailed once payment is confirmed.</div></div>
+        </section>
+      </div>
+
+      <section class="panel" aria-label="Google Sheets">
+        <div class="panel-h"><h2>Google Sheets</h2><span class="chip">Prime Sales 2026</span></div>
+        <div class="sheet" id="sheetOrders">
+          <table><thead><tr><th>Order ID</th><th>Customer</th><th>Items</th><th>Total (₦)</th><th>Paid (₦)</th><th>Status</th></tr></thead><tbody id="ordersBody"></tbody></table>
+        </div>
+        <div class="sheet" id="sheetVisitors" hidden>
+          <table><thead><tr><th>Visitor</th><th>Phone</th><th>Address</th><th>Time in</th><th>Time out</th></tr></thead><tbody id="visitorsBody"></tbody></table>
+        </div>
+        <div class="tabs" role="group" aria-label="Sheet tab">
+          <button aria-pressed="true" data-tab="Orders">Orders</button>
+          <button aria-pressed="false" data-tab="Visitors">Visitors</button>
+        </div>
+      </section>
+
+      <div class="stats">
+        <div class="stat"><b id="sOrders">0</b><span>orders today</span></div>
+        <div class="stat"><b id="sRev">₦0</b><span>revenue confirmed</span></div>
+        <div class="stat"><b id="sCopies">0</b><span>times written by hand</span></div>
+        <div class="stat"><b id="sBlocked">0</b><span>unpaid releases blocked</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <div>
+      <h2>Is your business still running on <em>paper?</em></h2>
+      <p>I build automations like this with n8n, Google Sheets, Telegram and WhatsApp, so your team stops copying and you can see your numbers live.</p>
+    </div>
+    <a class="btn gold" href="https://wa.me/2349137011978?text=Hi%20Aishat%2C%20I%20saw%20the%20Prime%20Publishers%20demo" target="_blank" rel="noopener">Chat on WhatsApp &nearr;</a>
+  </div>
+</div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s);
+  const NODES = [
+    {id:'gate',   ico:'🚪', t:'Gate sign-in',      tool:'Form',     d:'Visitor logged with name, phone and time in.'},
+    {id:'order',  ico:'📝', t:'Room 1: order',     tool:'Form → Sheets', d:'Prices looked up, total worked out, Order ID created.'},
+    {id:'cashier',ico:'💬', t:'Cashier alerted',   tool:'Telegram', d:'Replaces Room 2: no second book, no copying.'},
+    {id:'pay',    ico:'💳', t:'Room 3: payment',   tool:'IF node',  d:'Amount paid checked against the total, then marked Paid.'},
+    {id:'ware',   ico:'📦', t:'Warehouse prepares',tool:'Telegram', d:'Store team told exactly what to bring out.'},
+    {id:'receipt',ico:'✉️', t:'Receipt emailed',   tool:'Gmail',    d:'Branded HTML receipt sent to the customer.'},
+    {id:'release',ico:'🔒', t:'Release check',     tool:'IF node',  d:'Books can only be released for a paid order.'},
+    {id:'exit',   ico:'✅', t:'Gate cleared',      tool:'Telegram', d:'Gate told the customer may leave; time out logged.'},
+  ];
+  const CATALOG = [
+    ['Basic Science, Bk 2',2500],['English Reader, Bk 4',2800],['Mathematics, Bk 1',2200],
+    ['Exercise books (pack of 12)',1800],['Story book: The Clever Tortoise',1500],['Social Studies, Bk 3',2400]
+  ];
+  const PEOPLE = [
+    ['Mrs. Adebayo','Ikeja, Lagos'],['Mr. Okafor','Onitsha, Anambra'],['Mrs. Bello','Ilorin, Kwara'],
+    ['Mr. Eze','Enugu'],['Miss Lawal','Ibadan, Oyo'],['Mr. Musa','Kaduna'],['Mrs. Danjuma','Abuja'],['Mr. Olatunji','Abeokuta, Ogun']
+  ];
+  const fmt = n => '₦' + n.toLocaleString('en-NG');
+  const pick = a => a[Math.floor(Math.random()*a.length)];
+
+  // state
+  let scenario='paid', speed=1, steps=[], idx=0, playing=false, nextId=1042, clock=9*60+12;
+  const orders=[]; let blocked=0, copies=0;
+
+  // build flow list
+  const flow=$('#flow');
+  NODES.forEach(n=>{
+    const li=document.createElement('li'); li.className='node'; li.id='n-'+n.id;
+    li.innerHTML=`<div class="ico">${n.ico}</div><div><div class="nt">${n.t}<span class="tool">${n.tool}</span></div><div class="nd">${n.d}</div></div>`;
+    flow.appendChild(li);
+  });
+  const nodeEl=id=>$('#n-'+id);
+  const setNode=(id,cls)=>{const el=nodeEl(id);el.classList.remove('run','done','blocked','skip');if(cls)el.classList.add(cls);};
+  const resetNodes=()=>NODES.forEach(n=>setNode(n.id,''));
+
+  const time=()=>{clock+=Math.floor(Math.random()*4)+2;const h=Math.floor(clock/60),m=clock%60;return `${((h+11)%12)+1}:${String(m).padStart(2,'0')} ${h<12?'AM':'PM'}`;};
+  const log=(cls,txt)=>{const l=$('#log');const d=document.createElement('div');d.innerHTML=`<span class="t">${new Date().toLocaleTimeString('en-GB')}</span> <span class="${cls}">${txt}</span>`;l.appendChild(d);l.scrollTop=l.scrollHeight;};
+  const status=html=>$('#status').innerHTML=html;
+  const tg=(grp,body,alert)=>{
+    const box=$('#tg');box.querySelector('.empty')?.remove();
+    const m=document.createElement('div');m.className='msg'+(alert?' alert':'');
+    m.innerHTML=`<div class="from">Prime Bot <span class="grp ${grp}">${grp}</span></div><div class="body"></div><div class="tm">${time()}</div>`;
+    m.querySelector('.body').textContent=body;box.appendChild(m);box.scrollTop=box.scrollHeight;
+  };
+  const statusPill=s=>s==='Paid'?'<span class="pill paid">Paid</span>':s==='Collected'?'<span class="pill col">Collected</span>':'<span class="pill wait">Awaiting payment</span>';
+  const showTab=t=>{document.querySelectorAll('.tabs button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.tab===t));$('#sheetOrders').hidden=t!=='Orders';$('#sheetVisitors').hidden=t!=='Visitors';};
+  const renderStats=()=>{
+    $('#sOrders').textContent=orders.length;
+    $('#sRev').textContent=fmt(orders.filter(o=>o.status!=='Awaiting payment').reduce((a,o)=>a+o.total,0));
+    $('#sCopies').textContent=copies;
+    $('#sBlocked').textContent=blocked;
+  };
+
+  function newOrder(){
+    const [name,addr]=pick(PEOPLE);
+    const n=2+Math.floor(Math.random()*2);
+    const items=[...CATALOG].sort(()=>Math.random()-.5).slice(0,n).map(([t,p])=>({t,p,q:(1+Math.floor(Math.random()*4))*5}));
+    const total=items.reduce((a,i)=>a+i.p*i.q,0);
+    return {id:'PP-'+(nextId++),name,addr,phone:'080'+(3+Math.floor(Math.random()*6))+' *** '+String(1000+Math.floor(Math.random()*9000)),items,total,status:'Awaiting payment',paid:0,unpaid:scenario==='unpaid'};
+  }
+
+  function buildSteps(o){
+    const s=[];
+    s.push({node:'gate',run(){
+      o.timeIn=time();
+      const tr=document.createElement('tr');tr.id='v-'+o.id;tr.className='flash';
+      tr.innerHTML=`<td>${o.name}</td><td>${o.phone}</td><td>${o.addr}</td><td>${o.timeIn}</td><td class="out">—</td>`;
+      $('#visitorsBody').appendChild(tr);showTab('Visitors');
+      log('g',`Form trigger · Gate sign-in · ${o.name}`);log('o','Google Sheets · Append row → Visitors');
+      status(`<b>Gate:</b> ${o.name} signs in on a tablet instead of the paper book.`);
+    }});
+    s.push({node:'order',run(){
+      const tr=document.createElement('tr');tr.id='o-'+o.id;tr.className='flash';
+      tr.innerHTML=`<td><b>${o.id}</b></td><td>${o.name}</td><td>${o.items.map(i=>i.q+'× '+i.t).join(', ')}</td><td class="num">${o.total.toLocaleString('en-NG')}</td><td class="num paid">—</td><td class="st">${statusPill(o.status)}</td>`;
+      $('#ordersBody').appendChild(tr);showTab('Orders');orders.push(o);renderStats();
+      log('g',`Form trigger · Room 1 order · ${o.items.length} titles`);
+      log('t',`Code · Look up price list → total ${fmt(o.total)}`);
+      log('o',`Sheets · Append row → Orders · ${o.id}`);
+      status(`<b>Room 1:</b> the rep picks the books. Prices and the total (${fmt(o.total)}) are worked out automatically. Order <b>${o.id}</b> is created.`);
+    }});
+    s.push({node:'cashier',run(){
+      tg('Cashier',`🧾 New order ${o.id}\n${o.name}\nTotal: ${fmt(o.total)}\nPlease collect payment in Room 3.`);
+      log('o','Telegram · Send message → Cashier group');
+      status(`<b>Room 2 is gone.</b> Instead of copying the order into a second book, the cashier gets a Telegram alert.`);
+    }});
+    if(!o.unpaid){
+      s.push({node:'pay',run(){
+        o.paid=o.total;o.status='Paid';
+        const tr=$('#o-'+o.id);tr.querySelector('.paid').textContent=o.paid.toLocaleString('en-NG');tr.querySelector('.st').innerHTML=statusPill('Paid');
+        tr.querySelector('.st').classList.add('flash');tr.querySelector('.paid').classList.add('flash');renderStats();
+        log('g',`Form · Room 3 payment · ${fmt(o.paid)}`);log('t',`IF · paid (${o.paid}) == total (${o.total}) → true`);log('o',`Sheets · Update ${o.id} → Paid`);
+        status(`<b>Room 3:</b> the cashier enters ${fmt(o.paid)}. n8n checks it matches the total and marks the order <b>Paid</b>.`);
+      }});
+      s.push({node:'ware',run(){
+        tg('Warehouse',`📦 Prepare ${o.id} for ${o.name}\n`+o.items.map(i=>`• ${i.q}× ${i.t}`).join('\n'));
+        log('o','Telegram · Send message → Warehouse group');
+        status(`<b>Warehouse:</b> the store team already knows exactly what to bring out.`);
+      }});
+      s.push({node:'receipt',run(){
+        const mail=$('#mail');mail.innerHTML='';
+        mail.innerHTML=`<div class="mailhdr"><b>Prime Publishers</b> &lt;sales@prime…&gt; · just now<br>Your receipt for ${o.id}</div>
+        <div class="receipt"><div class="rh"><b>Prime Publishers</b><small>Payment receipt · ${o.id}</small></div>
+        <div class="rb"><div class="meta">Billed to ${o.name} · ${o.addr}</div>
+        <table><thead><tr><th>Item</th><th style="text-align:right">Amount</th></tr></thead><tbody>
+        ${o.items.map(i=>`<tr><td>${i.q}× ${i.t}</td><td style="text-align:right">${fmt(i.p*i.q)}</td></tr>`).join('')}
+        <tr class="tot"><td>Total</td><td style="text-align:right">${fmt(o.total)}</td></tr></tbody></table>
+        <span class="paid">✓ PAID</span><div class="meta" style="margin-top:8px">Show this Order ID at the store to collect your books.</div></div></div>`;
+        log('o','Gmail · Send HTML receipt → customer');
+        status(`<b>Receipt:</b> the customer gets a designed receipt by email. Before, they got nothing.`);
+      }});
+    } else {
+      s.push({node:'pay',skip:true,run(){
+        log('r',`Room 3 · no payment recorded for ${o.id}`);
+        status(`<b>No payment:</b> ${o.name} skips the cashier and heads for the store…`);
+      }});
+      s.push({node:'ware',skip:true,run(){status('Warehouse not alerted. Nothing to prepare for an unpaid order.');}});
+      s.push({node:'receipt',skip:true,run(){status('No receipt: the order was never paid.');}});
+    }
+    s.push({node:'release',guard:true,run(){
+      if(o.status==='Paid'){
+        o.status='Collected';const tr=$('#o-'+o.id);tr.querySelector('.st').innerHTML=statusPill('Collected');tr.querySelector('.st').classList.remove('flash');void tr.offsetWidth;tr.querySelector('.st').classList.add('flash');
+        log('t',`IF · ${o.id} status == Paid → true`);log('o',`Sheets · Update ${o.id} → Collected`);
+        status(`<b>Release:</b> the store scans ${o.id}, sees it is paid and hands over the books.`);
+      } else {
+        blocked++;renderStats();
+        tg('Warehouse',`⛔ DO NOT RELEASE ${o.id}\n${o.name} has not paid (${fmt(o.total)} owed).\nSend customer to Room 3.`,true);
+        log('t',`IF · ${o.id} status == Paid → false`);log('r','Release blocked · Warehouse warned on Telegram');
+        status(`<b style="color:var(--bad)">Blocked.</b> The system won't release books for an unpaid order. On paper, a missing stamp was easy to miss.`);
+        return 'blocked';
+      }
+    }});
+    s.push({node:'exit',run(){
+      if(o.status!=='Collected'){status('Gate not cleared: the customer must pay first.');return 'skip';}
+      const t=time();const v=$('#v-'+o.id);if(v){const c=v.querySelector('.out');c.textContent=t;c.classList.add('flash');}
+      tg('Gate',`✅ ${o.id} · ${o.name} has collected and may exit.`);
+      log('o','Telegram · Send message → Gate · Sheets · Visitors time out');
+      status(`<b>Done.</b> One entry, no copying, no lost stamps. Run another order, or jump to the 6 PM report.`);
+    }});
+    return s;
+  }
+
+  const sleep=ms=>new Promise(r=>setTimeout(r,ms/speed));
+  let busy=false;
+  async function doStep(){
+    if(busy) return; busy=true;
+    if(idx>=steps.length||!steps.length){startOrder();}
+    const st=steps[idx++];
+    setNode(st.node,'run');$('#wfchip').textContent='running';$('#wfchip').classList.add('live');
+    await sleep(650);
+    const r=st.run();
+    setNode(st.node, st.skip||r==='skip'?'skip':r==='blocked'?'blocked':'done');
+    if(idx>=steps.length){$('#wfchip').textContent='finished';$('#wfchip').classList.remove('live');$('#play').textContent='▶ Run another order';log('t','Execution finished.');}
+    busy=false;
+  }
+  function startOrder(){
+    resetNodes();const o=newOrder();steps=buildSteps(o);idx=0;
+    copies+=0; // automation: zero hand copies
+    log('t',`── New execution · ${o.id} · scenario: ${o.unpaid?'unpaid':'paid'} ──`);
+  }
+  async function play(){
+    if(playing) return; playing=true;lock(true);
+    if(idx>=steps.length||!steps.length) startOrder();
+    while(idx<steps.length&&playing){await doStep();await sleep(1300);}
+    playing=false;lock(false);
+  }
+  function lock(on){['#play','#step','#report','#reset'].forEach(s=>$(s).disabled=on);document.querySelectorAll('[data-scn]').forEach(b=>b.disabled=on);}
+
+  function report(){
+    if(playing) return;
+    clock=Math.max(clock,18*60-1);
+    const paid=orders.filter(o=>o.status!=='Awaiting payment');
+    const open=orders.filter(o=>o.status==='Awaiting payment');
+    const rev=paid.reduce((a,o)=>a+o.total,0);
+    const books=paid.reduce((a,o)=>a+o.items.reduce((b,i)=>b+i.q,0),0);
+    tg('Owner',`📊 Daily report · 6:00 PM\nOrders: ${orders.length}\nPaid: ${paid.length} · Revenue: ${fmt(rev)}\nBooks released: ${books}\nOpen/unpaid: ${open.length}${open.length?'\n'+open.map(o=>`• ${o.id} ${o.name} (${fmt(o.total)})`).join('\n'):''}\nBlocked releases: ${blocked}`);
+    log('g','Schedule trigger · 18:00 daily');log('o','Sheets · Read Orders → summarise → Telegram Owner');
+    status(orders.length?`<b>6 PM:</b> the owner gets the day's numbers on their phone. No counting through books.`:`<b>6 PM:</b> no orders yet. Run a few first, then check the report.`);
+  }
+  function reset(){
+    playing=false;steps=[];idx=0;orders.length=0;blocked=0;copies=0;clock=9*60+12;nextId=1042;
+    resetNodes();$('#ordersBody').innerHTML='';$('#visitorsBody').innerHTML='';
+    $('#tg').innerHTML='<div class="empty">Team alerts will show up here:<br>Cashier · Warehouse · Gate · Owner</div>';
+    $('#mail').innerHTML='<div class="empty" style="color:#8a7b8f">The receipt is emailed once payment is confirmed.</div>';
+    $('#log').innerHTML='<div><span class="t">n8n</span> Workflow active. Waiting for a form submission…</div>';
+    $('#play').textContent='▶ Run an order';$('#wfchip').textContent='idle';$('#wfchip').classList.remove('live');
+    showTab('Orders');renderStats();status('Ready. Pick a scenario and run an order.');
+  }
+
+  $('#play').onclick=play;
+  $('#step').onclick=()=>{if(!playing)doStep();};
+  $('#report').onclick=report;
+  $('#reset').onclick=reset;
+  document.querySelectorAll('[data-scn]').forEach(b=>b.onclick=()=>{
+    scenario=b.dataset.scn;document.querySelectorAll('[data-scn]').forEach(x=>x.setAttribute('aria-pressed',x===b));
+    if(idx<steps.length&&idx>0){steps=[];idx=0;resetNodes();status('Scenario changed. The next run uses it.');}
+  });
+  document.querySelectorAll('[data-spd]').forEach(b=>b.onclick=()=>{speed=+b.dataset.spd;document.querySelectorAll('[data-spd]').forEach(x=>x.setAttribute('aria-pressed',x===b));});
+  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+  showTab('Orders');
+})();
+</script>
+</body>
+</html>
