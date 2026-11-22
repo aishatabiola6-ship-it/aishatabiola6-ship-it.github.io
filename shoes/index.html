@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Heel Edit | Luxury Heels</title>
-<meta name="description" content="Statement heels, slingbacks and sandals. Pick your pair and order on WhatsApp.">
+<meta name="description" content="Statement heels, ballet flats, slides and sandals. Pick your pair and order on WhatsApp.">
 <meta property="og:title" content="The Heel Edit">
 <meta property="og:description" content="Statement heels, slingbacks and sandals. Order on WhatsApp.">
 <meta property="og:image" content="img/rose-crystal.jpg">
@@ -86,6 +86,10 @@
   .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
   .head h2{font-size:clamp(2.3rem,4.5vw,3.4rem);margin-top:.25em}
   .filters{display:flex;flex-wrap:wrap;gap:8px}
+  .filter-stack{display:flex;flex-direction:column;align-items:flex-end;gap:14px}
+  .groups{display:flex;gap:4px;padding:4px;background:var(--sand);border-radius:999px}
+  .tab{padding:.5em 1.3em;border-radius:999px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500;color:var(--muted);transition:.2s}
+  .tab[aria-selected="true"]{background:var(--paper);color:var(--ink);box-shadow:0 2px 8px rgba(40,25,10,.12)}
   .chip{padding:.55em 1.15em;border:1px solid var(--line);border-radius:999px;font-size:.8rem;letter-spacing:.08em;transition:.2s;background:var(--paper)}
   .chip:hover{border-color:var(--ink)}
   .chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
@@ -232,6 +236,9 @@
     .m-desc{margin:.6rem 0 1rem}
     .cta{padding:48px 24px}
     .faq .wrap{gap:16px}
+    .filter-stack{align-items:flex-start;width:100%}
+    .filters{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:4px;scrollbar-width:none}
+    .chip{white-space:nowrap}
   }
   @media (max-width:560px){
     .grid{grid-template-columns:1fr 1fr;gap:24px 12px}
@@ -273,9 +280,9 @@
   <section class="hero">
     <div class="wrap">
       <div>
-        <p class="eyebrow">New season · Heels &amp; slingbacks</p>
+        <p class="eyebrow">New season · Heels &amp; flats</p>
         <h1>Step in like you <em>own the room.</em></h1>
-        <p class="lead">Statement heels, crystal slingbacks and sculpted sandals, picked one pair at a time. Choose your size, tap order, and we'll sort the rest on WhatsApp.</p>
+        <p class="lead">Statement heels, mesh ballet flats, slides and crystal sandals, picked one pair at a time. Choose your size, tap order, and we'll sort the rest on WhatsApp.</p>
         <div class="hero-ctas">
           <a href="#shop" class="btn btn-dark">Shop the edit</a>
           <a href="#" class="btn btn-line js-wa">Chat with us</a>
@@ -288,7 +295,7 @@
       </div>
       <div class="hero-art">
         <div class="a"><img src="img/rose-crystal.jpg" alt="Rose gold crystal slingback heels held by hand" fetchpriority="high"></div>
-        <div class="c"><img src="img/noir-monogram.jpg" alt="" loading="lazy"></div>
+        <div class="c"><img src="img/cap-toe-mj.jpg" alt="" loading="lazy"></div>
         <div class="b"><img src="img/pearl-arc.jpg" alt="Black satin pump with pearl arc detail" loading="lazy"></div>
         <div class="tag"><b>Crystal season</b>Sparkle for every occasion</div>
       </div>
@@ -306,7 +313,10 @@
           <p class="eyebrow">The collection</p>
           <h2>Find your pair</h2>
         </div>
-        <div class="filters" id="filters" role="group" aria-label="Filter by style"></div>
+        <div class="filter-stack">
+          <div class="groups" id="groups" role="tablist" aria-label="Heels or flats"></div>
+          <div class="filters" id="filters" role="group" aria-label="Filter by style"></div>
+        </div>
       </div>
       <div class="grid" id="grid"></div>
     </div>
@@ -320,8 +330,8 @@
       </div>
       <div class="reveal">
         <p class="eyebrow">Our story</p>
-        <h2>Heels chosen for the moments you'll remember.</h2>
-        <p>We hand-pick every pair for its finish, its fit and how it feels after hours on your feet. Weddings, dinners, birthdays and the office: there's a heel for each of them here.</p>
+        <h2>Shoes chosen for the moments you'll remember.</h2>
+        <p>We hand-pick every pair for its finish, its fit and how it feels after hours on your feet. Weddings, dinners, brunch, the office and lazy Sundays: there's a pair for each of them here, from stilettos to slides.</p>
         <p>Every order is checked, packed in a box and sent with care.</p>
         <div class="perks">
           <div class="perk"><b>Checked by hand</b><span>Each pair inspected before it ships</span></div>
@@ -336,7 +346,7 @@
   <section class="how" id="how">
     <div class="wrap">
       <p class="eyebrow reveal">How to order</p>
-      <h2 class="reveal">Three taps to your new heels</h2>
+      <h2 class="reveal">Three taps to your new pair</h2>
       <div class="steps">
         <div class="step reveal"><h3>Pick your pair</h3><p>Tap any style to see more photos, then choose your colour and EU size.</p></div>
         <div class="step reveal"><h3>Add to bag</h3><p>Add one pair or a few. Your bag keeps everything together with sizes and totals.</p></div>
@@ -483,7 +493,52 @@ const PRODUCTS = [
   {id:"pearl-bloom", name:"Pearl Bloom Slingback", cat:"Bridal", price:70000, badge:"Bridal", badgeWine:true,
    imgs:["pearl-bloom.jpg"], colors:[["Ivory","#f3ede1"]],
    desc:"Ivory mesh embroidered with florals and seed pearls. Soft, romantic and ready for the aisle."},
+
+  /* ---- Flats ---- */
+  {id:"cap-toe-mj", group:"Flats", name:"Blush Cap-Toe Mary Jane", cat:"Ballet flats", price:85000, badge:"New",
+   imgs:["cap-toe-mj.jpg"], colors:[["Blush / black","#f2b8c0"]],
+   desc:"Quilted blush mesh with a black cap toe and a slim strap fastened with a gold button."},
+  {id:"honeycomb", group:"Flats", name:"Honeycomb Mesh Mary Jane", cat:"Ballet flats", price:78000, badge:"2 colours",
+   imgs:["honeycomb-cream.jpg","honeycomb-black.jpg"], colors:[["Cream","#efe2cc",0],["Black","#121212",1]],
+   desc:"Honeycomb mesh, two buckled straps and a gold triangle plaque on the toe."},
+  {id:"velvet-mj", group:"Flats", name:"Velvet Mary Jane", cat:"Ballet flats", price:80000,
+   imgs:["velvet-mj.jpg"], colors:[["Wine","#5a1424"],["Black","#121212"]],
+   desc:"Plush velvet with two buckled straps and a gold triangle plaque. Rich in wine or classic black."},
+  {id:"embroidered-mj", group:"Flats", name:"Embroidered Double-Buckle Flat", cat:"Ballet flats", price:95000, badge:"Bestseller",
+   imgs:["embroidered-choc.jpg","embroidered-pink.jpg"], colors:[["Chocolate","#3b2a1f",0],["Blush","#eab5bd",1]],
+   desc:"Sheer monogram-embroidered mesh with scalloped edges and two padded buckle straps."},
+  {id:"denim-mj", group:"Flats", name:"Denim Monogram Mary Jane", cat:"Ballet flats", price:90000,
+   imgs:["denim-mj.jpg"], colors:[["Denim blue","#3e64a3"]],
+   desc:"Monogram denim with a tan leather strap trimmed in red and a gold buckle."},
+  {id:"wine-mesh-flat", group:"Flats", name:"Wine Mesh Horsebit Flat", cat:"Ballet flats", price:88000,
+   imgs:["wine-mesh-flat.jpg"], colors:[["Wine","#5e1a26"]],
+   desc:"Square-toe wine fishnet with wrap straps, a little bow and a gold horsebit."},
+  {id:"studded-flat", group:"Flats", name:"Studded Wine Ballet Flat", cat:"Ballet flats", price:92000,
+   imgs:["studded-flat.jpg"], colors:[["Wine","#5e1a26"]],
+   desc:"Wine leather covered in silver studs, finished with bows and slim wrap straps."},
+  {id:"ribbon-mesh", group:"Flats", name:"Ribbon Bow Mesh Flat", cat:"Ballet flats", price:70000,
+   imgs:["ribbon-mesh.jpg"], colors:[["Nude","#e3c6a8"]],
+   desc:"Nude open-weave mesh with a lettered ribbon tied into a soft bow."},
+  {id:"rose-glow-flat", group:"Flats", name:"Rose Glow Flat Sandal", cat:"Flat sandals", price:38000,
+   imgs:["rose-glow-flat.jpg"], colors:[["Rose gold","#d9a189"]],
+   desc:"Crystal-lined straps that catch every light. Easy glam for holidays and nights out."},
+  {id:"emblem-thong", group:"Flats", name:"Gold Emblem Thong Sandal", cat:"Flat sandals", price:65000,
+   imgs:["emblem-thong.jpg"], colors:[["Black","#121212"]],
+   desc:"Slim black leather thong sandal with a gold emblem and an adjustable ankle strap."},
+  {id:"lock-slide", group:"Flats", name:"Lock Detail Slide", cat:"Slides", price:75000, badge:"4 colours",
+   imgs:["lock-slide.jpg"], colors:[["Tan","#a8642f"],["White & tan","#eeeae2"],["Black","#121212"],["Sky suede","#9fb6cf"]],
+   desc:"Square-toe slide with a wide band and a polished turn-lock. Four colourways."},
+  {id:"cutout-slide", group:"Flats", name:"Blush & Wine Cutout Slide", cat:"Slides", price:85000,
+   imgs:["cutout-slide.jpg"], colors:[["Blush / wine","#e9b9bd"]],
+   desc:"Cushioned wine footbed, a blush cut-out strap and an adjustable back strap."},
+  {id:"band-slide", group:"Flats", name:"Candy Pink Band Slide", cat:"Slides", price:30000,
+   imgs:["band-slide.jpg"], colors:[["Pink","#d97ea0"]],
+   desc:"Soft pink band with a silver ring detail on a pale pink sole. Everyday comfort."},
+  {id:"teddy-slipper", group:"Flats", name:"Teddy Bow Slipper", cat:"Slippers", price:35000,
+   imgs:["teddy-slipper.jpg"], colors:[["Camel","#c9a988"]],
+   desc:"Fluffy faux-fur slipper with a tan leather bow strap. Cosy at home and out."},
 ];
+PRODUCTS.forEach(p => p.group = p.group || "Heels");
 
 /* ===== App ===== */
 const $ = s => document.querySelector(s);
@@ -491,19 +546,28 @@ const money = n => SHOP.currency + n.toLocaleString("en-NG");
 const waLink = text => `https://wa.me/${SHOP.whatsapp}?text=${encodeURIComponent(text)}`;
 const byId = id => PRODUCTS.find(p => p.id === id);
 
-document.querySelectorAll(".js-wa").forEach(a => { a.href = waLink(`Hi ${SHOP.name}! I'd like to ask about your heels.`); a.target = "_blank"; a.rel = "noopener"; });
+document.querySelectorAll(".js-wa").forEach(a => { a.href = waLink(`Hi ${SHOP.name}! I'd like to ask about your shoes.`); a.target = "_blank"; a.rel = "noopener"; });
 document.querySelectorAll(".js-ig").forEach(a => { a.href = SHOP.instagram; a.target = "_blank"; a.rel = "noopener"; });
 $("#copy").textContent = `© ${new Date().getFullYear()} ${SHOP.name}`;
 $("#statCount").textContent = PRODUCTS.length;
 
 // marquee
-const words = ["Crystal slingbacks","Statement sandals","Bridal heels","Patent pumps","Delivered to your door"];
+const words = ["Crystal slingbacks","Mesh ballet flats","Bridal heels","Everyday slides","Velvet Mary Janes","Delivered to your door"];
 $("#marquee").innerHTML = [...words,...words,...words,...words].map(w=>`<span>${w}</span>`).join("");
 
 // filters + grid
-const cats = ["All", ...new Set(PRODUCTS.map(p => p.cat))];
-let current = "All";
-$("#filters").innerHTML = cats.map(c => `<button class="chip" aria-pressed="${c==="All"}" data-cat="${c}">${c}</button>`).join("");
+const groups = ["All", ...new Set(PRODUCTS.map(p => p.group))];
+let group = "All", current = "All";
+function renderGroups(){
+  $("#groups").innerHTML = groups.map(g => `<button class="tab" role="tab" aria-selected="${g===group}" data-g="${g}">${g==="All"?"All shoes":g}</button>`).join("");
+  const cats = ["All", ...new Set(PRODUCTS.filter(p => group==="All" || p.group===group).map(p => p.cat))];
+  $("#filters").innerHTML = cats.map(c => `<button class="chip" aria-pressed="${c===current}" data-cat="${c}">${c==="All"?"All styles":c}</button>`).join("");
+}
+renderGroups();
+$("#groups").addEventListener("click", e => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  group = b.dataset.g; current = "All"; renderGroups(); renderGrid();
+});
 $("#filters").addEventListener("click", e => {
   const b = e.target.closest(".chip"); if (!b) return;
   current = b.dataset.cat;
@@ -512,7 +576,7 @@ $("#filters").addEventListener("click", e => {
 });
 
 function renderGrid(){
-  const list = PRODUCTS.filter(p => current === "All" || p.cat === current);
+  const list = PRODUCTS.filter(p => (group === "All" || p.group === group) && (current === "All" || p.cat === current));
   $("#grid").innerHTML = list.map((p,i) => `
     <article class="card" tabindex="0" data-id="${p.id}" style="animation-delay:${i*60}ms" aria-label="${p.name}, ${money(p.price)}">
       <div class="card-img">
@@ -560,6 +624,8 @@ $("#mThumbs").addEventListener("click", e => {
 $("#mColors").addEventListener("click", e => {
   const b = e.target.closest(".opt"); if (!b) return;
   sel.color = b.dataset.color; $("#mColorName").textContent = sel.color;
+  const p = byId(sel.id), c = p.colors.find(c => c[0] === sel.color);
+  if (c && c[2] !== undefined){ setMain(p, c[2]); document.querySelectorAll("#mThumbs button").forEach(x => x.setAttribute("aria-pressed", +x.dataset.i === c[2])); }
   document.querySelectorAll("#mColors .opt").forEach(x => x.setAttribute("aria-pressed", x === b)); note("");
 });
 $("#mSizes").addEventListener("click", e => {
@@ -599,12 +665,12 @@ function renderBag(bump){
   if (bump){ c.classList.remove("pop"); void c.offsetWidth; c.classList.add("pop"); }
   $("#dFoot").style.display = count ? "" : "none";
   if (!count){
-    $("#dItems").innerHTML = `<div class="d-empty"><b>Your bag is empty</b>Find a pair you love and add it here.<br><br><button class="btn btn-line" data-close data-go="#shop">Browse heels</button></div>`;
+    $("#dItems").innerHTML = `<div class="d-empty"><b>Your bag is empty</b>Find a pair you love and add it here.<br><br><button class="btn btn-line" data-close data-go="#shop">Browse shoes</button></div>`;
     return;
   }
   $("#dItems").innerHTML = bag.map((l,i) => { const p = byId(l.id); return `
     <div class="line">
-      <img src="img/${p.imgs[0]}" alt="">
+      <img src="img/${p.imgs[(p.colors.find(c=>c[0]===l.color)||[])[2] ?? 0]}" alt="">
       <div><h4>${p.name}</h4><small>${l.color} · EU ${l.size}</small>
         <div class="qty"><button data-q="-1" data-i="${i}" aria-label="Decrease">−</button><span>${l.qty}</span><button data-q="1" data-i="${i}" aria-label="Increase">+</button></div>
       </div>
