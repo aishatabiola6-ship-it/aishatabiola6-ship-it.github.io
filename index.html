@@ -184,6 +184,7 @@ dialog.case::backdrop{background:rgba(8,4,9,.8);backdrop-filter:blur(4px)}
 .gal.g2{grid-template-columns:1fr 1fr}
 .gal.pair{grid-template-columns:3fr 1fr;align-items:start}
 .gal.mk{grid-template-columns:1fr 1fr}
+.gal.g5{grid-template-columns:repeat(5,1fr)}
 .shot{margin:0;min-width:0}
 .shot button{all:unset;display:block;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .shot button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -265,6 +266,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   .two,.about,.cred{grid-template-columns:1fr;gap:28px}
   .contact{grid-template-columns:1fr}
   .gal.g4{grid-template-columns:1fr 1fr}
+  .gal.g5{grid-template-columns:repeat(3,1fr)}
   .facts{grid-template-columns:1fr 1fr}
 }
 @media (max-width:560px){
@@ -287,6 +289,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   .gal.g2{grid-template-columns:1fr}
   .gal.pair{grid-template-columns:1fr}
   .gal.mk{grid-template-columns:1fr}
+  .gal.g5{grid-template-columns:1fr 1fr}
   .gal.pair .shot.tall{max-width:240px;margin-inline:auto;width:100%}
   section.block{padding-block:64px}
 }
@@ -393,7 +396,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
             <div class="acts"><a class="btn gold" href="#blush">Read more</a><a class="btn" href="https://blush-site.pages.dev/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="web">
-          <div class="cover"><img src="img/unboxd-desktop.jpg" alt="Unboxd homepage on a laptop" loading="lazy"></div>
+          <div class="cover"><img src="img/unboxd-cover.jpg" alt="Four Unboxd app screens: welcome, home, product page and bag" loading="lazy" style="object-position:center"></div>
           <div class="pbody"><span class="k">E-commerce app</span><h3>Unboxd</h3><p>A gadget store app for phones, laptops, audio, watches and cameras, delivered boxed with warranty.</p><div class="tags"><span>App</span><span>Gadgets</span><span>Checkout</span></div>
             <div class="acts"><a class="btn gold" href="#unboxd">Read more</a><a class="btn" href="https://unboxd.aishatabiola6.workers.dev/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
@@ -505,11 +508,8 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
     <div><h4>What I built</h4><ul class="ticks"><li>A splash screen and swipeable welcome pages, then log in or create an account.</li><li>A home screen with categories and a spotlight on featured products.</li><li>Product pages with photos and colour options, priced in naira.</li><li>A bag and checkout that work the same on a phone and a laptop.</li><li>Published on Cloudflare so it loads fast anywhere.</li></ul></div>
   </div>
   <div class="flow"><ol><li><div class="node"><div class="ty">Splash</div><div class="nm">Unboxd</div></div></li><li><div class="node"><div class="ty">Welcome</div><div class="nm">Swipe through</div></div></li><li><div class="node"><div class="ty">Account</div><div class="nm">Log in</div></div></li><li><div class="node"><div class="ty">Home</div><div class="nm">Categories</div></div></li><li><div class="node"><div class="ty">Product</div><div class="nm">Colour &amp; price</div></div></li><li><div class="node"><div class="ty">Checkout</div><div class="nm">Bag to order</div></div></li></ol></div>
-  <div class="gal pair">
-    <figure class="shot"><button type="button" data-cap="Unboxd on a laptop."><img src="img/unboxd-desktop.jpg" alt="Unboxd homepage on a laptop" width="1200" height="750" loading="lazy"></button><figcaption>On a laptop</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Unboxd on a phone."><img src="img/unboxd-phone.jpg" alt="Unboxd homepage on a phone" width="390" height="844" loading="lazy"></button><figcaption>On a phone</figcaption></figure>
-  </div>
-  <div class="gal g4">
+  <div class="gal g5">
+    <figure class="shot tall"><button type="button" data-cap="Welcome: swipe through, then get started or skip."><img src="img/unboxd-phone.jpg" alt="Unboxd welcome screen" width="390" height="844" loading="lazy"></button><figcaption>Welcome</figcaption></figure>
     <figure class="shot tall"><button type="button" data-cap="Log in, try the demo account or continue as a guest."><img src="img/unboxd-login.jpg" alt="Unboxd log in screen" width="390" height="844" loading="lazy"></button><figcaption>Log in</figcaption></figure>
     <figure class="shot tall"><button type="button" data-cap="Home: search, categories, featured drops and trending products."><img src="img/unboxd-home.jpg" alt="Unboxd home screen" width="390" height="844" loading="lazy"></button><figcaption>Home</figcaption></figure>
     <figure class="shot tall"><button type="button" data-cap="Product page: colour, storage, highlights and Add to bag."><img src="img/unboxd-product.jpg" alt="Unboxd product page" width="390" height="844" loading="lazy"></button><figcaption>Product page</figcaption></figure>
