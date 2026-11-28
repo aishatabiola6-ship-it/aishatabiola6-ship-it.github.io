@@ -182,6 +182,7 @@ dialog.case::backdrop{background:rgba(8,4,9,.8);backdrop-filter:blur(4px)}
 .gal{display:grid;gap:12px;margin-top:24px}
 .gal.g4{grid-template-columns:repeat(4,1fr)}
 .gal.g2{grid-template-columns:1fr 1fr}
+.gal.pair{grid-template-columns:3fr 1fr;align-items:start}
 .shot{margin:0;min-width:0}
 .shot button{all:unset;display:block;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .shot button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -283,6 +284,8 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   .svc p{font-size:12px;line-height:1.45}
   .steps{grid-template-columns:1fr}
   .gal.g2{grid-template-columns:1fr}
+  .gal.pair{grid-template-columns:1fr}
+  .gal.pair .shot.tall{max-width:240px;margin-inline:auto;width:100%}
   section.block{padding-block:64px}
 }
 @media (prefers-reduced-motion:reduce){
@@ -320,7 +323,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
       <p class="hi">Portfolio · 2026</p>
       <h1 class="serif">Systems that run the <em>busywork</em>, so the business can run itself.</h1>
       <p class="role">Website Designer · AI Automation Specialist</p>
-      <p class="lede">I design websites and online stores for brands, and I set up the systems behind them, so orders, payments and customer messages take care of themselves. Here are six things I've built.</p>
+      <p class="lede">I design websites and online stores for brands, and I set up the systems behind them, so orders, payments and customer messages take care of themselves. Here are eight things I've built.</p>
       <div class="ctas">
         <a class="btn gold" href="#contact">Hire me</a>
         <a class="btn" href="#work">See my work</a>
@@ -365,7 +368,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
 
   <section class="block" id="work">
     <div class="wrap">
-      <div class="head"><p class="label">Selected work</p><h2>My <em class="acc">projects</em></h2><p>Here are six projects. Each one is explained in full further down the page, with screenshots.</p></div>
+      <div class="head"><p class="label">Selected work</p><h2>My <em class="acc">projects</em></h2><p>Here are eight projects: five websites and three automation projects. Each one is explained in full further down the page, with screenshots.</p></div>
       <div class="filters" role="group" aria-label="Filter projects">
         <button type="button" data-f="all" aria-pressed="true">All</button>
         <button type="button" data-f="web" aria-pressed="false">Websites</button>
@@ -381,6 +384,16 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
           <div class="cover"><img src="img/strut-laptop.jpg" alt="Strut shoe store homepage" style="object-position:center"></div>
           <div class="pbody"><span class="k">E-commerce website</span><h3>Strut</h3><p>A shoe store for heels, flats, boots and sneakers that installs as an app, with accounts, sizes, delivery by state and WhatsApp orders.</p><div class="tags"><span>Store</span><span>Installable app</span><span>Email</span></div>
             <div class="acts"><a class="btn gold" href="#strut">Read more</a><a class="btn" href="https://aishatabiola6-ship-it.github.io/Shop_camorra/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
+        </article>
+        <article class="pcard rise" data-cat="web">
+          <div class="cover"><img src="img/blush-desktop.jpg" alt="Blush homepage on a laptop" loading="lazy"></div>
+          <div class="pbody"><span class="k">E-commerce website</span><h3>Blush</h3><p>A makeup store with brands like Dior, YSL and Huda Beauty, shade picking, accounts and WhatsApp orders.</p><div class="tags"><span>Beauty store</span><span>Shade picker</span><span>Emails</span></div>
+            <div class="acts"><a class="btn gold" href="#blush">Read more</a><a class="btn" href="https://blush-site.pages.dev/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
+        </article>
+        <article class="pcard rise" data-cat="web">
+          <div class="cover"><img src="img/unboxd-desktop.jpg" alt="Unboxd homepage on a laptop" loading="lazy"></div>
+          <div class="pbody"><span class="k">E-commerce app</span><h3>Unboxd</h3><p>A gadget store app for phones, laptops, audio, watches and cameras, delivered boxed with warranty.</p><div class="tags"><span>App</span><span>Gadgets</span><span>Checkout</span></div>
+            <div class="acts"><a class="btn gold" href="#unboxd">Read more</a><a class="btn" href="https://unboxd.aishatabiola6.workers.dev/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="web">
           <div class="cover"><img src="img/preshy-desktop.jpg" alt="Preshy Emporium homepage"></div>
@@ -455,9 +468,47 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
     </div>
   </article>
 
+  <article class="case-inline" id="blush">
+    <div class="wrap">
+  <p class="label">03 · Online beauty store</p>
+  <h2 style="margin-top:10px"><em class="acc">Blush</em></h2>
+  <dl class="meta"><div><dt>Product</dt><dd>Makeup &amp; beauty</dd></div><div><dt>Role</dt><dd>Design &amp; build</dd></div><div><dt>Scope</dt><dd>Shop to order email</dd></div></dl>
+  <div class="case-cta"><a class="btn gold" href="https://blush-site.pages.dev/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
+  <div class="two">
+    <div><h4>The brief</h4><p class="prose">Blush sells makeup from brands shoppers already trust. Buying makeup online is all about the shade, so every product had to show its shades clearly, and the store needed its own soft, pink look, separate from the shoe store it grew out of.</p></div>
+    <div><h4>What I built</h4><ul class="ticks"><li>A welcome screen with model photos, and a shop split into tabs: lips, cheeks, eyes, face, lashes, brows and glow.</li><li>Brand filters for Dior, YSL, Huda Beauty, Charlotte Tilbury, Rare Beauty and more.</li><li>Shade picking on every product page before it goes in the bag.</li><li>Accounts with emailed codes, order emails, and BLS order numbers.</li><li>Delivery fees by state, and every order can also be sent on WhatsApp.</li></ul></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Welcome</div><div class="nm">Model looks</div></div></li><li><div class="node"><div class="ty">Shop</div><div class="nm">Tabs &amp; brands</div></div></li><li><div class="node"><div class="ty">Product</div><div class="nm">Pick a shade</div></div></li><li><div class="node"><div class="ty">Bag</div><div class="nm">Subtotal</div></div></li><li><div class="node"><div class="ty">Delivery</div><div class="nm">Fee by state</div></div></li><li><div class="node"><div class="ty">Order</div><div class="nm">Email &amp; WhatsApp</div></div></li></ol></div>
+  <div class="gal pair">
+    <figure class="shot"><button type="button" data-cap="Blush on a laptop."><img src="img/blush-desktop.jpg" alt="Blush homepage on a laptop" width="1200" height="750" loading="lazy"></button><figcaption>On a laptop</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Blush on a phone."><img src="img/blush-phone.jpg" alt="Blush homepage on a phone" width="390" height="844" loading="lazy"></button><figcaption>On a phone</figcaption></figure>
+  </div>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
+  <article class="case-inline" id="unboxd">
+    <div class="wrap">
+  <p class="label">04 · Gadget store app</p>
+  <h2 style="margin-top:10px"><em class="acc">Unboxd</em></h2>
+  <dl class="meta"><div><dt>Product</dt><dd>Phones, laptops &amp; audio</dd></div><div><dt>Role</dt><dd>Design &amp; build</dd></div><div><dt>Hosting</dt><dd>Cloudflare</dd></div></dl>
+  <div class="case-cta"><a class="btn gold" href="https://unboxd.aishatabiola6.workers.dev/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
+  <div class="two">
+    <div><h4>The brief</h4><p class="prose">Unboxd sells new tech: phones, laptops, audio, watches and cameras. Gadget buyers compare a lot before they spend, so the store had to feel like a polished phone app, with clear product pages and naira prices from the first screen to checkout.</p></div>
+    <div><h4>What I built</h4><ul class="ticks"><li>A splash screen and swipeable welcome pages, then log in or create an account.</li><li>A home screen with categories and a spotlight on featured products.</li><li>Product pages with photos and colour options, priced in naira.</li><li>A bag and checkout that work the same on a phone and a laptop.</li><li>Published on Cloudflare so it loads fast anywhere.</li></ul></div>
+  </div>
+  <div class="flow"><ol><li><div class="node"><div class="ty">Splash</div><div class="nm">Unboxd</div></div></li><li><div class="node"><div class="ty">Welcome</div><div class="nm">Swipe through</div></div></li><li><div class="node"><div class="ty">Account</div><div class="nm">Log in</div></div></li><li><div class="node"><div class="ty">Home</div><div class="nm">Categories</div></div></li><li><div class="node"><div class="ty">Product</div><div class="nm">Colour &amp; price</div></div></li><li><div class="node"><div class="ty">Checkout</div><div class="nm">Bag to order</div></div></li></ol></div>
+  <div class="gal pair">
+    <figure class="shot"><button type="button" data-cap="Unboxd on a laptop."><img src="img/unboxd-desktop.jpg" alt="Unboxd homepage on a laptop" width="1200" height="750" loading="lazy"></button><figcaption>On a laptop</figcaption></figure>
+    <figure class="shot tall"><button type="button" data-cap="Unboxd on a phone."><img src="img/unboxd-phone.jpg" alt="Unboxd homepage on a phone" width="390" height="844" loading="lazy"></button><figcaption>On a phone</figcaption></figure>
+  </div>
+      <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
+    </div>
+  </article>
+
   <article class="case-inline" id="preshy">
     <div class="wrap">
-  <p class="label">03 · E-commerce website</p>
+  <p class="label">05 · E-commerce website</p>
   <h2 style="margin-top:10px">Preshy <em class="acc">Emporium</em></h2>
   <dl class="meta"><div><dt>Client</dt><dd>Intimate wellness boutique</dd></div><div><dt>Role</dt><dd>Design, build &amp; automation</dd></div><div><dt>Payments</dt><dd>Flutterwave</dd></div></dl>
   <div class="case-cta"><a class="btn gold" href="https://preshy-emporium.netlify.app/" target="_blank" rel="noopener">View the live site &nearr;</a></div>
@@ -479,7 +530,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
 
   <article class="case-inline" id="prime">
     <div class="wrap">
-  <p class="label">04 · Sales process automation</p>
+  <p class="label">06 · Sales process automation</p>
   <h2 style="margin-top:10px">Prime Publishers, <em class="acc">off paper</em></h2>
   <dl class="meta"><div><dt>Client</dt><dd>Book production business</dd></div><div><dt>Stack</dt><dd>n8n · Google Sheets</dd></div><div><dt>Alerts</dt><dd>Telegram · Email</dd></div></dl>
   <div class="case-cta"><a class="btn gold" href="https://prime-publisher-books.netlify.app/" target="_blank" rel="noopener">View the live project &nearr;</a></div>
@@ -511,7 +562,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
 
   <article class="case-inline" id="lead-bot">
     <div class="wrap">
-  <p class="label">05 · Conversational lead capture</p>
+  <p class="label">07 · Conversational lead capture</p>
   <h2 style="margin-top:10px">PRIME <em class="acc">Lead Bot</em></h2>
   <dl class="meta"><div><dt>Channel</dt><dd>Telegram</dd></div><div><dt>Stack</dt><dd>n8n · Sheets · Gmail</dd></div><div><dt>Output</dt><dd>Lead + email + alert</dd></div></dl>
   <div class="two">
@@ -531,7 +582,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
 
   <article class="case-inline" id="consultant">
     <div class="wrap">
-  <p class="label">06 · AI audit, workflow &amp; SOP · Training project</p>
+  <p class="label">08 · AI audit, workflow &amp; SOP · Training project</p>
   <h2 style="margin-top:10px">Lead follow-up for a <em class="acc">solo consultant</em></h2>
   <dl class="meta"><div><dt>Brief</dt><dd>"James", boutique solo consultant</dd></div><div><dt>Programme</dt><dd>TIBA AI Authority Challenge</dd></div><div><dt>Stack</dt><dd>Zapier · AI · Gmail · Sheets</dd></div></dl>
   <p class="note" style="margin-top:20px">This was a training brief from TIBA Academy's AI Authority Challenge, not a paid client. It shows how I audit a business and design an automation from start to finish.</p>
