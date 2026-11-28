@@ -183,6 +183,7 @@ dialog.case::backdrop{background:rgba(8,4,9,.8);backdrop-filter:blur(4px)}
 .gal.g4{grid-template-columns:repeat(4,1fr)}
 .gal.g2{grid-template-columns:1fr 1fr}
 .gal.pair{grid-template-columns:3fr 1fr;align-items:start}
+.gal.mk{grid-template-columns:1fr 1fr}
 .shot{margin:0;min-width:0}
 .shot button{all:unset;display:block;width:100%;cursor:zoom-in;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--card)}
 .shot button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
@@ -285,6 +286,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
   .steps{grid-template-columns:1fr}
   .gal.g2{grid-template-columns:1fr}
   .gal.pair{grid-template-columns:1fr}
+  .gal.mk{grid-template-columns:1fr}
   .gal.pair .shot.tall{max-width:240px;margin-inline:auto;width:100%}
   section.block{padding-block:64px}
 }
@@ -386,7 +388,7 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
             <div class="acts"><a class="btn gold" href="#strut">Read more</a><a class="btn" href="https://aishatabiola6-ship-it.github.io/Shop_camorra/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
         <article class="pcard rise" data-cat="web">
-          <div class="cover"><img src="img/blush-desktop.jpg" alt="Blush homepage on a laptop" loading="lazy"></div>
+          <div class="cover"><img src="img/blush-laptop.jpg" alt="Blush homepage on a laptop" loading="lazy" style="object-position:left center"></div>
           <div class="pbody"><span class="k">E-commerce website</span><h3>Blush</h3><p>A makeup store with brands like Dior, YSL and Huda Beauty, shade picking, accounts and WhatsApp orders.</p><div class="tags"><span>Beauty store</span><span>Shade picker</span><span>Emails</span></div>
             <div class="acts"><a class="btn gold" href="#blush">Read more</a><a class="btn" href="https://blush-site.pages.dev/" target="_blank" rel="noopener">Live site &nearr;</a></div></div>
         </article>
@@ -479,15 +481,14 @@ dialog.lb .xbtn{position:absolute;top:8px;right:8px}
     <div><h4>What I built</h4><ul class="ticks"><li>A welcome screen with model photos, and a shop split into tabs: lips, cheeks, eyes, face, lashes, brows and glow.</li><li>Brand filters for Dior, YSL, Huda Beauty, Charlotte Tilbury, Rare Beauty and more.</li><li>Shade picking on every product page before it goes in the bag.</li><li>Accounts with emailed codes, order emails, and BLS order numbers.</li><li>Delivery fees by state, and every order can also be sent on WhatsApp.</li></ul></div>
   </div>
   <div class="flow"><ol><li><div class="node"><div class="ty">Welcome</div><div class="nm">Model looks</div></div></li><li><div class="node"><div class="ty">Shop</div><div class="nm">Tabs &amp; brands</div></div></li><li><div class="node"><div class="ty">Product</div><div class="nm">Pick a shade</div></div></li><li><div class="node"><div class="ty">Bag</div><div class="nm">Subtotal</div></div></li><li><div class="node"><div class="ty">Delivery</div><div class="nm">Fee by state</div></div></li><li><div class="node"><div class="ty">Order</div><div class="nm">Email &amp; WhatsApp</div></div></li></ol></div>
-  <div class="gal pair">
-    <figure class="shot"><button type="button" data-cap="Blush on a laptop."><img src="img/blush-desktop.jpg" alt="Blush homepage on a laptop" width="1200" height="750" loading="lazy"></button><figcaption>On a laptop</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Blush on a phone."><img src="img/blush-phone.jpg" alt="Blush homepage on a phone" width="390" height="844" loading="lazy"></button><figcaption>On a phone</figcaption></figure>
-  </div>
-  <div class="gal g4">
-    <figure class="shot tall"><button type="button" data-cap="Home: new arrivals, the five model looks and search."><img src="img/blush-home.jpg" alt="Blush home screen on a phone" width="390" height="844" loading="lazy"></button><figcaption>Home</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Blush favourites: what shoppers are adding to their bags."><img src="img/blush-favourites.jpg" alt="Blush favourites row" width="390" height="844" loading="lazy"></button><figcaption>Favourites</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Product page: photos, price, shade picker and Add to bag."><img src="img/blush-product.jpg" alt="Blush product page" width="390" height="844" loading="lazy"></button><figcaption>Pick a shade</figcaption></figure>
-    <figure class="shot tall"><button type="button" data-cap="Bag: quantity, subtotal, checkout or order on WhatsApp."><img src="img/blush-bag.jpg" alt="Blush bag" width="390" height="844" loading="lazy"></button><figcaption>Bag &amp; checkout</figcaption></figure>
+  <figure class="shot" style="margin-top:24px"><button type="button" data-cap="Blush homepage on a laptop: the five looks and search."><img src="img/blush-laptop.jpg" alt="Blush homepage on a laptop" width="1580" height="724" loading="lazy"></button><figcaption>Homepage on a laptop</figcaption></figure>
+  <div class="gal mk">
+    <figure class="shot"><button type="button" data-cap="Create a password, then home with the looks and categories."><img src="img/blush-mk-signup.jpg" alt="Blush on three phones: Create a password, then home with the looks and categories" width="1400" height="1024" loading="lazy"></button><figcaption>Sign up &amp; home</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="Blush favourites, the Soft glam look and Browse it all."><img src="img/blush-mk-looks.jpg" alt="Blush on three phones: Blush favourites, the Soft glam look and Browse it all" width="1400" height="1024" loading="lazy"></button><figcaption>Favourites &amp; looks</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="The Bronze sculpt look, each product linked."><img src="img/blush-mk-sculpt.jpg" alt="Blush on three phones: The Bronze sculpt look, each product linked" width="1400" height="1024" loading="lazy"></button><figcaption>Shop the look</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="Browse it all: tabs, brand filters, badges and shades."><img src="img/blush-mk-shop.jpg" alt="Blush on three phones: Browse it all: tabs, brand filters, badges and shades" width="1400" height="1024" loading="lazy"></button><figcaption>The shop</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="Face products: foundations, contour, powders and sponges."><img src="img/blush-mk-face.jpg" alt="Blush on three phones: Face products: foundations, contour, powders and sponges" width="1400" height="1024" loading="lazy"></button><figcaption>Face &amp; foundation</figcaption></figure>
+    <figure class="shot"><button type="button" data-cap="Shade help, the Blush promise and answers to common questions."><img src="img/blush-mk-help.jpg" alt="Blush on three phones: Shade help, the Blush promise and answers to common questions" width="1400" height="1024" loading="lazy"></button><figcaption>Shade help &amp; FAQ</figcaption></figure>
   </div>
       <p class="back"><a href="#work">&uarr; Back to all projects</a></p>
     </div>
